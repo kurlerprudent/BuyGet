@@ -19,3 +19,115 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Bento Box Hover Effect */
+.bento-box {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.bento-box:hover {
+  transform: translateY(-5px);
+}
+
+.bento-box:hover ~ .bento-box {
+  filter: blur(4px);
+}
+
+/* Glowing Button Effect */
+.glowing-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.glowing-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 20%, rgba(255,255,255,0.1) 50%, transparent 80%);
+  animation: glow 4s infinite linear;
+  opacity: 0.3;
+}
+
+@keyframes glow {
+  0% { transform: rotate(0deg) translate(-50%, -50%); }
+  100% { transform: rotate(360deg) translate(-50%, -50%); }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6366f1, #06b6d4);
+  border-radius: 4px;
+}
+
+/* Selection Colors */
+::selection {
+  background: #6366f1;
+  color: white;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pointer Cursors */
+button, a, .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Custom Glow Effect */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3), 0 0 30px rgba(6, 182, 212, 0.2);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+
+
+/* global.css */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+
+@keyframes glitch {
+  0% {
+    clip: rect(8px, 9999px, 8px, 0);
+    transform: skew(0.5deg);
+  }
+  50% {
+    clip: rect(8px, 9999px, 80px, 0);
+    transform: skew(1deg);
+  }
+  100% {
+    clip: rect(80px, 9999px, 8px, 0);
+    transform: skew(0deg);
+  }
+}

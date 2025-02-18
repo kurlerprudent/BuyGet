@@ -6,7 +6,15 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
+    backdropBlur: {
+      xs: '2px',
+      
+    },
+    animation: {
+      aurora: 'aurora 20s infinite linear',
+    },
     extend: {
       colors: {
         background: "var(--background)",
