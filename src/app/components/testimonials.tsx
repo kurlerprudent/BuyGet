@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, animate } from 'framer-motion';
-import { Star, Play, Twitter, Linkedin, Check, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Star, Twitter, Linkedin, Check, ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { useMotionValue } from 'framer-motion';
 
@@ -12,8 +12,8 @@ const testimonials = [
     role: "CTO at TechCorp",
     text: "The platform transformed our workflow completely. Our team's productivity increased by 200% within the first month of implementation.",
     rating: 5,
-    avatar: "/avatars/sarah.jpg",
-    video: "/testimonials/sarah.mp4",
+    avatar: "/test_2.jpg",
+    // Video property removed and replaced with just an image avatar
     companyLogo: "/logos/techcorp.svg",
     socialProof: ["twitter-verified", "linkedin-recommendation"]
   },
@@ -23,7 +23,7 @@ const testimonials = [
     role: "Product Lead at StartX",
     text: "Exceptional customer support and cutting-edge features. We've reduced operational costs by 40% while improving service quality.",
     rating: 4.5,
-    avatar: "/avatars/michael.jpg",
+    avatar: "/test_3.jpg",
     companyLogo: "/logos/startx.png",
     socialProof: ["top-reviewer"]
   }
@@ -58,7 +58,6 @@ const AnimatedStars = ({ rating }: { rating: number }) => {
 
 export function TestimonialsSection() {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
     // Auto-rotate every 8 seconds
     useEffect(() => {
@@ -140,11 +139,10 @@ export function TestimonialsSection() {
                                 )}
                             </div>
 
-                            {/* Avatar with Hover Effect */}
+                            {/* Avatar */}
                             <motion.div
-                                className="relative w-20 h-20 mx-auto mb-6 cursor-pointer group"
+                                className="relative w-20 h-20 mx-auto mb-6"
                                 whileHover={{ rotate: 5, scale: 1.05 }}
-                                onClick={() => testimonial.video && setIsVideoPlaying(true)}
                             >
                                 <Image
                                     src={testimonial.avatar}
@@ -153,11 +151,6 @@ export function TestimonialsSection() {
                                     height={80}
                                     className="rounded-full object-cover border-2 border-primary/50"
                                 />
-                                {testimonial.video && (
-                                    <div className="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Play className="w-8 h-8 text-white" />
-                                    </div>
-                                )}
                             </motion.div>
 
                             {/* Testimonial Content */}
@@ -217,34 +210,6 @@ export function TestimonialsSection() {
                     ))}
                 </div>
             </div>
-
-            {/* Video Modal */}
-            <AnimatePresence>
-                {isVideoPlaying && (
-                    <motion.div
-                        className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setIsVideoPlaying(false)}
-                    >
-                        <motion.video
-                            controls
-                            autoPlay
-                            muted
-                            className="rounded-lg shadow-2xl max-w-4xl w-full"
-                            initial={{ scale: 0.9 }}
-                            animate={{ scale: 1 }}
-                        >
-                            <source src={testimonial.video} type="video/mp4" />
-                        </motion.video>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </section>
     );
 }
-// function useMotionValue(arg0: number) {
-//     throw new Error('Function not implemented.');
-// }
-

@@ -3,20 +3,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-// Recommended image sources:
-// 1. Company official websites (press/media pages)
-// 2. Clearbit API (https://clearbit.com/logo)
-// 3. SVG Repo (https://www.svgrepo.com/)
-// 4. Wikimedia Commons (https://commons.wikimedia.org/)
-// Convert PNGs to SVG using: https://www.onlineconverter.com/png-to-svg
 
 const clients = [
   { name: 'Safaricom', logo: '/logos/safaricom.png' },
   { name: 'KCB Group', logo: '/logos/kcb-group.png' },
-  { name: 'Equity Bank', logo: '/logos/moe.png' },
-  { name: 'Nation Media', logo: '/logos/national-media.jpeg' },
-  { name: 'Cooperative Bank', logo: '/logos/ges.png' },
-  { name: 'Kenya Airways', logo: '/logos/kenya-airways.svg' },
+  { name: 'Ministry of Education', logo: '/logos/moe.png' },
+  { name: 'National Media', logo: '/logos/national-media.jpeg' },
+  { name: 'Ghana Education service', logo: '/logos/ges.png' },
   { name: 'Telkom Kenya', logo: '/logos/telkom.png' },
   { name: 'EABL', logo: '/logos/eabl.png' },
 ];

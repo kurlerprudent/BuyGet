@@ -5,7 +5,7 @@ import { Mail, ArrowUp, Moon, Sun, Globe, Facebook, Twitter, Instagram, Linkedin
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
