@@ -1,16 +1,15 @@
+import { CTASection } from "@/components/CtaSection";
+import ProjectsSlider from "@/components/projectsSlider";
+import ServiceGrid from "@/components/servicesGrid";
+import ServiceHero from "@/components/servicesHero";
 
-
-import ServiceHero from '../components/servicesHero';
-import ServiceGrid from '../components/servicesGrid';
-import ProjectsSlider from '../components/projectsSlider';
-import { CTASection } from '../components/CtaSection';
 
 
 
 const Page = () => {
   return (
     <div className="bg-gray-900">
-      <ServiceHero />
+      <ServiceHero/>
       <ServiceGrid />
       <ProjectsSlider/>
       <CTASection/>

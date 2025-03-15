@@ -1,16 +1,15 @@
-import OurStoryCoreValues from "../components/aboutCoreValues";
-import AboutHero from "../components/aboutHero";
-import {  CompanyOverview } from "../components/aboutIntro";
-import Footer from "../components/Footer";
-import LeadershipSection from "../components/leadershipSection";
-import { Navbar } from "../components/Navigation";
+import OurStoryCoreValues from "@/components/aboutCoreValues";
+import HeroSection from "@/components/aboutHero";
+import { CompanyOverview } from "@/components/aboutIntro";
+import LeadershipSection from "@/components/leadershipSection";
+
 
 
 const Page = ()=>{
     return(
         <div>
          
-            <AboutHero/>
+            <HeroSection/>
             <CompanyOverview/>
             <OurStoryCoreValues/>
             <LeadershipSection/>

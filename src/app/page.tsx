@@ -1,11 +1,11 @@
-import { ClientMarquee } from "./components/clientMarquee";
-import { CTASection } from "./components/CtaSection";
-import ProjectsPreview from "./components/featuredProjects";
-import Footer from "./components/Footer";
-import { HeroSection } from "./components/heroSection";
-import { Navbar } from "./components/Navigation";
-import { StatsPanel } from "./components/StatisticsPanel";
-import { TestimonialsSection } from "./components/testimonials";
+"use client";
+
+import { ClientMarquee } from "@/components/clientMarquee";
+import { CTASection } from "@/components/CtaSection";
+import ProjectsPreview from "@/components/featuredProjects";
+import { HeroSection } from "@/components/heroSection";
+import { StatsPanel } from "@/components/StatisticsPanel";
+import { TestimonialsSection } from "@/components/testimonials";
 
 const Page = ()=>{
     return(

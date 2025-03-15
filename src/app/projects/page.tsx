@@ -1,4 +1,5 @@
-import SimpleHero from "../components/projectHero";
+import SimpleHero from "@/components/projectHero";
+
 
 
 const Page = ()=>{
