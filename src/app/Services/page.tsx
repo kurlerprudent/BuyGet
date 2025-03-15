@@ -1,3 +1,6 @@
+
+"use client"
+
 import { CTASection } from "@/components/CtaSection";
 import ProjectsSlider from "@/components/projectsSlider";
 import ServiceGrid from "@/components/servicesGrid";
@@ -6,7 +9,7 @@ import ServiceHero from "@/components/servicesHero";
 
 
 
-const Page = () => {
+const Services = () => {
   return (
     <div className="bg-gray-900">
       <ServiceHero/>
@@ -18,4 +21,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Services;

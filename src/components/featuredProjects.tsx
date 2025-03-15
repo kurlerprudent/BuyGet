@@ -73,7 +73,7 @@ const ProjectsPreview = () => {
         >
           {displayedProjects.map((project, index) => (
             <Link href="/projects" key={index} passHref>
-              <motion.p
+              <motion.h3
                 className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6 shadow-lg transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl cursor-pointer"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
@@ -88,7 +88,7 @@ const ProjectsPreview = () => {
                 <span className="text-sm text-gray-400 uppercase tracking-wide">
                   {project.category}
                 </span>
-              </motion.p>
+              </motion.h3>
             </Link>
           ))}
         </motion.div>

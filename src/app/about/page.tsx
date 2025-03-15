@@ -1,3 +1,5 @@
+"use client";
+
 import OurStoryCoreValues from "@/components/aboutCoreValues";
 import HeroSection from "@/components/aboutHero";
 import { CompanyOverview } from "@/components/aboutIntro";
