@@ -121,7 +121,7 @@ export function HeroSection() {
               href="/services"
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 text-background 
                         rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
-                        text-base md:text-lg font-semibold group"
+                        text-base md:text-lg font-semibold group text-white" 
               whileHover={{ 
                 scale: 1.03,
                 boxShadow: '0 4px 24px rgba(255,255,255,0.1)',
@@ -134,7 +134,7 @@ export function HeroSection() {
             <motion.a
               href="/contact"
               className="px-6 py-3 md:px-8 md:py-4 border-2 border-background/40 text-background rounded-lg md:rounded-xl 
-                        hover:border-background/80 hover:bg-background/5 transition-all text-base md:text-lg 
+                        hover:border-background/80 hover:bg-background/5 transition-all text-white text-base md:text-lg 
                         font-semibold text-center"
               whileHover={{ 
                 scale: 1.03,

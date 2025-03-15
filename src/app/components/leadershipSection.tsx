@@ -30,87 +30,9 @@ const executives = [
       "Manages financial planning, investment strategies, and fiscal sustainability. Ensures revenue optimization.",
     image: "/leaders/cfo.jpg",
   },
-  {
-    id: 4,
-    name: "Miss Shine",
-    title: "Chief Marketing Officer (CMO)",
-    description:
-      "Directs marketing, branding, and business growth strategies. Expands Buyget’s market presence and strategic partnerships.",
-    image: "/leaders/cmo.jpg",
-  },
+
 ];
 
-const directors = [
-  {
-    id: 1,
-    name: "Major Adams",
-    title: "Director (Executive), SHSWEB",
-    description:
-      "Oversees SHSWEB operations, school partnerships, and AI-powered biometric systems.",
-  },
-  {
-    id: 2,
-    name: "[Vacant]",
-    title: "Director (Executive), BUYGET NETWORK",
-    description:
-      "Manages network security and all partner development.",
-  },
-  {
-    id: 3,
-    name: "[Vacant]",
-    title: "Director (Executive), INOVIC",
-    description:
-      "Leads AI development, automation, and robotics research.",
-  },
-  {
-    id: 4,
-    name: "[Vacant]",
-    title: "Director (Executive), SOFTICA",
-    description:
-      "Oversees enterprise software solutions and application development.",
-  },
-  {
-    id: 5,
-    name: "[Vacant]",
-    title: "Director (Executive), ITECTONA",
-    description: "Security & Military Engineering.",
-  },
-  {
-    id: 6,
-    name: "[Vacant]",
-    title: "Director (Executive), UNISOFT",
-    description:
-      "Oversees industrial, agricultural, and construction machinery operations.",
-  },
-  {
-    id: 7,
-    name: "[Vacant]",
-    title: "Director (Executive), TEKSOL",
-    description:
-      "Leads consumer electronics and smart devices initiatives.",
-  },
-  {
-    id: 8,
-    name: "[Vacant]",
-    title: "Director (Executive), CTECH",
-    description:
-      "Creates cybersecurity solutions and digital identity protection measures.",
-  },
-  {
-    id: 9,
-    name: "[Vacant]",
-    title: "Director (Executive), NRECOM",
-    description:
-      "Leads research and deployment of renewable energy solutions.",
-  },
-  {
-    id: 10,
-    name: "[Vacant]",
-    title: "Director (Executive), ZAPPY EON",
-    description:
-      "Manages aerospace, electric vehicle production, and aviation projects.",
-  },
-];
 
 const teams = [
   {
@@ -168,7 +90,7 @@ const LeadershipSection = () => {
           >
             Executive Caucus
           </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:px-6">
             {executives.map((exec) => (
               <motion.div
                 key={exec.id}
@@ -195,34 +117,7 @@ const LeadershipSection = () => {
           </div>
         </div>
 
-        {/* Directors & Senior Management */}
-        <div className="mb-16">
-          <motion.h3
-            className="text-3xl font-semibold text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            Directors &amp; Senior Management
-          </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {directors.map((director) => (
-              <motion.div
-                key={director.id}
-                className="bg-white/10 rounded-xl p-6 shadow-sm hover:shadow-lg border border-white/20 backdrop-blur-md transition-all"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h4 className="text-xl font-bold text-white">{director.name}</h4>
-                <p className="text-sm text-gray-300 mb-2">{director.title}</p>
-                <p className="text-gray-300">{director.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+       
 
         {/* Operational & Technical Teams */}
         <div className="mb-16">
@@ -264,13 +159,13 @@ const LeadershipSection = () => {
             Governance
           </motion.h3>
           <motion.div
-            className="bg-white/10 rounded-xl shadow-sm p-6 border border-white/20 backdrop-blur-md transition-all"
+            className="bg-white/10 rounded-xl shadow-sm p-6 border lg:max-w-[50%] border-white/20 backdrop-blur-md transition-all"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-gray-300">
+            <p className="text-gray-300 ">
               Buyget ICT Solutions is governed by a Board of Directors that ensures transparency, accountability, and long-term strategic growth for all divisions. Their oversight plays a pivotal role in shaping our vision and safeguarding stakeholder interests.
             </p>
           </motion.div>

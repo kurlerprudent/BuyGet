@@ -10,14 +10,14 @@ import { TestimonialsSection } from "./components/testimonials";
 const Page = ()=>{
     return(
             <div>
-               <Navbar />
+             
                <HeroSection/>
                <ClientMarquee/>
                <StatsPanel/>
                <ProjectsPreview/>
                <TestimonialsSection/>
                <CTASection/>
-               <Footer/>
+               
             </div>
     )
 }

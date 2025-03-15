@@ -9,12 +9,12 @@ import { Navbar } from "../components/Navigation";
 const Page = ()=>{
     return(
         <div>
-            <Navbar/>
+         
             <AboutHero/>
             <CompanyOverview/>
             <OurStoryCoreValues/>
             <LeadershipSection/>
-            <Footer/>
+           
         </div>
     )
 }
