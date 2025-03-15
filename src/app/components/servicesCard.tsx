@@ -24,7 +24,7 @@ interface ServiceCardProps {
   service: Service;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard= ({ service }: ServiceCardProps) => {
   return (
     <motion.div
       className="relative overflow-hidden rounded-2xl shadow-2xl group h-[400px] cursor-pointer border border-white/10"

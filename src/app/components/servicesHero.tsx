@@ -2,23 +2,48 @@
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const ServiceHero: React.FC = () => {
+  const [isClient, setIsClient] = useState(false);
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   
-  const rotateX = useTransform(cursorY, [0, window.innerHeight], [-5, 5]);
-  const rotateY = useTransform(cursorX, [0, window.innerWidth], [5, -5]);
+  // Initialize with safe defaults
+  const [windowSize, setWindowSize] = useState({
+    width: 1000,
+    height: 1000
+  });
+
+  const rotateX = useTransform(
+    cursorY,
+    [0, windowSize.height],
+    [-5, 5]
+  );
+  
+  const rotateY = useTransform(
+    cursorX,
+    [0, windowSize.width],
+    [5, -5]
+  );
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-    
-    window.addEventListener('mousemove', moveCursor);
-    return () => window.removeEventListener('mousemove', moveCursor);
+    // Client-side only initialization
+    setIsClient(true);
+    if (typeof window !== "undefined") {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+
+      const moveCursor = (e: MouseEvent) => {
+        cursorX.set(e.clientX);
+        cursorY.set(e.clientY);
+      };
+
+      window.addEventListener("mousemove", moveCursor);
+      return () => window.removeEventListener("mousemove", moveCursor);
+    }
   }, []);
 
   const FloatingParticle = () => {
@@ -51,22 +76,22 @@ const ServiceHero: React.FC = () => {
     );
   };
 
- return (
+  return (
     <section className="relative h-screen overflow-hidden dark:bg-gray-900">
-      {/* Enhanced Dark Overlay */}
+      {/* Background image with parallax effect */}
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{ 
           backgroundImage: "url('/assets/services-hero.jpg')",
-          rotateX,
-          rotateY,
+          rotateX: isClient ? rotateX : 0,
+          rotateY: isClient ? rotateY : 0,
         }}
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
       />
-      
-      {/* Stronger Overlay for Better Contrast */}
+
+      {/* Gradient overlay */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-purple-900/60"
         initial={{ opacity: 0 }}
@@ -74,7 +99,7 @@ const ServiceHero: React.FC = () => {
         transition={{ duration: 2 }}
       />
 
-      {/* Content Container with Text Enhancements */}
+      {/* Content container */}
       <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
         <motion.div className="max-w-4xl">
           <motion.h1
@@ -104,14 +129,11 @@ const ServiceHero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
           >
-           Discover innovative <span className="text-pink-300 font-semibold underline-offset-4 hover:underline cursor-default">solutions and cutting-edge technology that</span> and{" "}
+            Discover innovative <span className="text-pink-300 font-semibold underline-offset-4 hover:underline cursor-default">solutions and cutting-edge technology</span> and{" "}
             <span className="text-yellow-300 font-semibold underline-offset-4 hover:underline cursor-default">next-generation web technologies</span> empower your business in the digital age.
-
           </motion.p>
 
-         
-
-          {/* Enhanced CTA Button */}
+          {/* CTA Button */}
           <motion.div
             className="inline-block"
             whileHover={{ scale: 1.05 }}
@@ -131,22 +153,12 @@ const ServiceHero: React.FC = () => {
                   </svg>
                   Schedule Free Consultation
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-pink-600 via-red-600 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                  }}
-                />
               </motion.div>
             </Link>
           </motion.div>
         </motion.div>
 
-        {/* Scroll Prompt */}
+        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -162,6 +174,15 @@ const ServiceHero: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Floating particles - render only on client */}
+      {isClient && (
+        <>
+          {[...Array(12)].map((_, i) => (
+            <FloatingParticle key={i} />
+          ))}
+        </>
+      )}
     </section>
   );
 };

@@ -51,7 +51,7 @@ const services = [
   },
 ];
 
-const ServiceGrid: React.FC = () => {
+const ServiceGrid = () => {
   return (
     <section className="py-20 px-4 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto">
