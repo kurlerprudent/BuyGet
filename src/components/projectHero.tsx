@@ -75,6 +75,8 @@ const SimpleHero = () => {
         <ArrowDownIcon className="w-6 h-6 text-white animate-bounce" />
         <span className="text-sm text-white/80">Scroll to discover</span>
       </motion.div>
+
+      <h1 className="text-2xl text-red-600">Page Under Construction....</h1>
     </section>
   );
 };
