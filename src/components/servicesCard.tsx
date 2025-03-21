@@ -97,7 +97,7 @@ const ServiceCard = ({ service, isDarkMode }: ServiceCardProps) => {
             className="inline-flex items-center gap-2 text-white/80 hover:text-pink-400 transition-colors"
             whileHover={{ x: 5 }}
           >
-            <Link href={`/services/${service.slug}`} legacyBehavior>
+            <Link href={`/Services/${service.slug}`} legacyBehavior>
               <a className="inline-flex items-center gap-2">
                 <span>Explore Service</span>
                 <svg

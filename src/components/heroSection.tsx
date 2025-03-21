@@ -125,7 +125,7 @@ export function HeroSection() {
             transition={{ delay: 1.2 }}
           >
             <motion.a
-              href="/services"
+              href="/Services"
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
                         rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
                         text-base md:text-lg font-semibold group text-white"
