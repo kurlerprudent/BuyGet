@@ -1,84 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-const SimpleHero = () => {
+const ModernHero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 to-purple-900">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[url('/assets/grid.svg')] bg-center" />
-      
-      {/* Floating shapes */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-48 h-48 bg-purple-500/20 rounded-full blur-xl"
-        animate={{
-          y: [0, 30, 0],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-pink-500/20 rounded-full blur-xl"
-        animate={{
-          y: [30, 0, 30],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ duration: 6, repeat: Infinity, delay: 2 }}
-      />
+    <section className="relative h-screen flex items-center justify-center isolate overflow-hidden">
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/dev1.jpg"
+          alt="Modern digital workspace"
+          fill
+          priority
+          quality={80}
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/40" />
+      </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4">
-        <motion.h1
+      {/* Content Container */}
+      <div className="max-w-4xl px-4 text-center">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-white mb-6"
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Crafting Digital
-          <span className="block bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-            Excellence
-          </span>
-        </motion.h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+            <span className="block mb-4">Innovation Meets</span>
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Digital Precision
+            </span>
+          </h1>
 
-        <motion.p
+          <motion.p
+            className="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Crafting transformative digital experiences through cutting-edge 
+            technology and human-centered design.
+          </motion.p>
+
+          <motion.div
+            className="mt-8 flex justify-center gap-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+           
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+          transition={{ delay: 1.2 }}
         >
-          Transforming ideas into impactful digital experiences through innovative
-          solutions and cutting-edge technology.
-        </motion.p>
-
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <button className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-8 py-3 rounded-lg text-white hover:bg-white/20 transition-all group">
-            Explore Our Work
-            <span className="group-hover:translate-x-1 transition-transform">
-              &rarr;
-            </span>
-          </button>
+          <ChevronDownIcon className="w-7 h-7 text-white animate-bounce" />
+          <span className="text-sm text-white/80 font-medium tracking-wide">
+            Discover More
+          </span>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 flex flex-col items-center gap-1"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
-      >
-        <ArrowDownIcon className="w-6 h-6 text-white animate-bounce" />
-        <span className="text-sm text-white/80">Scroll to discover</span>
-      </motion.div>
-
-      <h1 className="text-2xl text-red-600">Page Under Construction....</h1>
+      {/* Subtle Grid Overlay */}
+      <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-10 pointer-events-none" />
     </section>
   );
 };
 
-export default SimpleHero;
+export default ModernHero;

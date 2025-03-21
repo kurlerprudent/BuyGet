@@ -1,64 +1,60 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const projectsPreview = [
   {
     title: "SHSWEB",
     description: "Develops technological solutions for senior high schools.",
     category: "Technology and Software Solutions",
+    bgImage:  "/assets/shsweb.jpg",
   },
   {
     title: "SOFTICA",
     description: "Software development and enterprise solutions.",
     category: "Technology and Software Solutions",
+    bgImage:"/assets/softica.jpg",
   },
   {
     title: "INOVIC",
     description: "AI & robotics research and development.",
     category: "Technology and Software Solutions",
+    bgImage: "/assets/inovic.jpg",
   },
   {
     title: "CTECH",
     description: "Cybersecurity solutions & digital identity protection.",
     category: "Technology and Software Solutions",
+    bgImage: "/assets/ctech.jpg",
   },
-  {
-    title: "ITECTONA",
-    description: "Security & military engineering.",
-    category: "Engineering, Aerospace, and Security",
-  },
-  {
-    title: "ZAPPY EON",
-    description: "Aerospace & electrical engineering (drones, electric vehicles, aviation systems).",
-    category: "Engineering, Aerospace, and Security",
-  },
-  {
-    title: "UNISOFT",
-    description: "Industrial, agricultural, and construction machinery.",
-    category: "Engineering, Aerospace, and Security",
-  },
-  {
-    title: "TEKSOL",
-    description: "Consumer electronics and smart devices.",
-    category: "Consumer Electronics & Renewable Energy",
-  },
-  {
-    title: "NRECOM",
-    description: "Renewable energy (solar, wind, hydro solutions).",
-    category: "Consumer Electronics & Renewable Energy",
-  },
+ 
+ 
 ];
 
 const ProjectsPreview = () => {
-  // Only display the first four projects.
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const displayedProjects = projectsPreview.slice(0, 4);
 
+  // Dark mode detection
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+    
+    checkDarkMode();
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
+    <section className={`py-24 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-gray-100'}`}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+        <h2 className={`text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           Our Projects
         </h2>
         <motion.div
@@ -73,28 +69,42 @@ const ProjectsPreview = () => {
         >
           {displayedProjects.map((project, index) => (
             <Link href="/projects" key={index} passHref>
-              <motion.h3
-                className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6 shadow-lg transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl cursor-pointer"
+              <motion.div
+                className={`relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer`}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.4 }}
               >
-                <h3 className="text-2xl font-bold mb-2 text-white">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <span className="text-sm text-gray-400 uppercase tracking-wide">
-                  {project.category}
-                </span>
-              </motion.h3>
+                <div className="relative h-64 rounded-2xl overflow-hidden">
+                  <Image
+                    src={project.bgImage}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 ${isDarkMode ? "bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent" : "bg-gradient-to-t from-gray-800 via-gray-800/60 to-transparent"}`} />
+                </div>
+                <div className={`p-6 ${isDarkMode ? "bg-gray-800" : "bg-gray-100"} ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+                  <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? "text-white" : "text-black"}`}>
+                    {project.title}
+                  </h3>
+                  <p className={`mb-4 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                    {project.description}
+                  </p>
+                  <span className={`text-sm uppercase tracking-wide ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
+                    {project.category}
+                  </span>
+                </div>
+              </motion.div>
             </Link>
           ))}
         </motion.div>
         <div className="mt-12 flex justify-center">
           <Link href="/projects" passHref>
-            <p className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-full shadow-xl transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
+            <p className={`px-8 py-3 font-semibold rounded-full shadow-xl transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white`}>
               View All Projects
             </p>
           </Link>

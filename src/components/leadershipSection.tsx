@@ -1,14 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-// Updated sample data from the document
 
 const executives = [
   {
     id: 1,
-    name: "Mr. Honu",
+    name: "Mr. H",
     title: "Chief Executive Officer (CEO)",
     description:
       "Provides overall leadership, strategic vision, and corporate governance. Leads innovation and global expansion. Oversees daily operations, resource management, and business efficiency. Ensures cross-departmental collaboration.",
@@ -30,9 +28,7 @@ const executives = [
       "Manages financial planning, investment strategies, and fiscal sustainability. Ensures revenue optimization.",
     image: "/leaders/cfo.jpg",
   },
-
 ];
-
 
 const teams = [
   {
@@ -62,15 +58,34 @@ const teams = [
 ];
 
 const LeadershipSection = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    checkDarkMode();
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative py-20">
+    <section className={`relative py-20 ${
+      isDarkMode
+        ? 'bg-gradient-to-b from-gray-900 via-gray-950 to-black'
+        : 'bg-gradient-to-b from-slate-50 via-slate-100 to-slate-200'
+    }`}>
       {/* Fixed dark background */}
-      <div className="fixed inset-0 bg-black" style={{ zIndex: -1 }} />
+      <div className="fixed inset-0" style={{ zIndex: -1, background: isDarkMode ? 'black' : 'white' }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-white text-center mb-12"
+          className={`text-4xl md:text-5xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} text-center mb-12`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -82,7 +97,7 @@ const LeadershipSection = () => {
         {/* Executive Caucus */}
         <div className="mb-16">
           <motion.h3
-            className="text-3xl font-semibold text-white mb-6"
+            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -94,7 +109,7 @@ const LeadershipSection = () => {
             {executives.map((exec) => (
               <motion.div
                 key={exec.id}
-                className="bg-white/10 rounded-xl p-6 shadow-sm hover:shadow-lg border border-white/20 backdrop-blur-md text-center transition-all"
+                className={`rounded-xl p-6 shadow-sm hover:shadow-lg border ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} backdrop-blur-md text-center transition-all`}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -109,20 +124,18 @@ const LeadershipSection = () => {
                     className="object-cover"
                   />
                 </div>
-                <h4 className="text-xl font-bold text-white">{exec.name}</h4>
-                <p className="text-sm text-gray-300 mb-2">{exec.title}</p>
-                <p className="text-gray-300">{exec.description}</p>
+                <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>{exec.name}</h4>
+                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>{exec.title}</p>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{exec.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
-       
-
         {/* Operational & Technical Teams */}
         <div className="mb-16">
           <motion.h3
-            className="text-3xl font-semibold text-white mb-6"
+            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -134,14 +147,14 @@ const LeadershipSection = () => {
             {teams.map((team) => (
               <motion.div
                 key={team.id}
-                className="bg-white/10 rounded-xl p-6 shadow-sm hover:shadow-lg border border-white/20 backdrop-blur-md transition-all"
+                className={`rounded-xl p-6 shadow-sm hover:shadow-lg border ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} transition-all backdrop-blur-md`}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h4 className="text-xl font-bold text-white">{team.name}</h4>
-                <p className="text-gray-300">{team.description}</p>
+                <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>{team.name}</h4>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{team.description}</p>
               </motion.div>
             ))}
           </div>
@@ -150,7 +163,7 @@ const LeadershipSection = () => {
         {/* Governance */}
         <div>
           <motion.h3
-            className="text-3xl font-semibold text-white mb-6"
+            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -159,16 +172,16 @@ const LeadershipSection = () => {
             Governance
           </motion.h3>
           <motion.div
-            className="bg-white/10 rounded-xl shadow-sm p-6 border lg:max-w-[50%] border-white/20 backdrop-blur-md transition-all"
+            className={`rounded-xl shadow-sm p-6 border lg:max-w-[50%] ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} transition-all backdrop-blur-md`}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-gray-300 ">
+            <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Buyget ICT Solutions is governed by a Board of Directors that ensures transparency, accountability, and long-term strategic growth for all divisions. Their oversight plays a pivotal role in shaping our vision and safeguarding stakeholder interests.
             </p>
-          </motion.div>
+            </motion.div>
         </div>
       </div>
     </section>

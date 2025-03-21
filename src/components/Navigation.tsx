@@ -9,16 +9,16 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Default to dark mode
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
   const links = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/Services' },
+    { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   // Scroll handling
@@ -35,9 +35,10 @@ export function Navbar() {
   // Dark mode handling
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
-    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(storedTheme ? storedTheme === 'dark' : isDarkPreferred);
-    document.documentElement.classList.toggle('dark', storedTheme === 'dark' || (!storedTheme && isDarkPreferred));
+    // Default to dark mode if no theme stored
+    const initialDarkMode = storedTheme ? storedTheme === 'dark' : true;
+    setDarkMode(initialDarkMode);
+    document.documentElement.classList.toggle('dark', initialDarkMode);
   }, []);
 
   const toggleDarkMode = () => {
@@ -110,7 +111,7 @@ export function Navbar() {
                 whileHover={{ y: -2 }}
                 animate={pathname === link.href ? activeLinkAnimation : {}}
               >
-                <span className={`text-lg font-medium ${pathname === link.href ? 'text-pink-500' : 'text-white'}`}>
+                <span className={`text-lg font-medium ${pathname === link.href ? 'text-pink-500' : darkMode ? 'text-white' : 'text-gray-800'}`}>
                   {link.name}
                 </span>
                 <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
@@ -125,7 +126,7 @@ export function Navbar() {
               {darkMode ? (
                 <Sun className="w-5 h-5 text-yellow-500" />
               ) : (
-                <Moon className="w-5 h-5 text-white" />
+                <Moon className="w-5 h-5 text-gray-800" />
               )}
             </motion.button>
           </div>
@@ -143,52 +144,63 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-<AnimatePresence>
-  {isMenuOpen && (
-    <motion.div
-      className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm"
-      initial="closed"
-      animate="open"
-      exit="closed"
-      variants={mobileMenuVariants}
-      onClick={handleBackdropClick}
-    >
-      <div className="relative container mx-auto px-4 py-8 h-full flex flex-col items-center">
-        {/* Close Button Added Here */}
-        <button
-          onClick={() => setIsMenuOpen(false)}
-          className="absolute top-4 right-4 text-white hover:text-pink-500 transition-colors"
-          aria-label="Close menu"
-        >
-          <X size={24} />
-        </button>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={mobileMenuVariants}
+            onClick={handleBackdropClick}
+          >
+            <div className="relative container mx-auto px-4 py-8 h-full flex flex-col items-center">
+              {/* Close Button Added Here */}
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-4 right-4 text-white hover:text-pink-500 transition-colors"
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
 
-        <motion.div
-          variants={linkVariants}
-          className="flex flex-col space-y-6 w-full items-center"
-        >
-          {links.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="relative group"
-              variants={linkVariants}
-              onClick={() => setIsMenuOpen(false)}
-              whileHover={{ x: 10 }}
-            >
-              <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-500' : 'text-white'}`}>
-                {link.name}
-              </span>
-              <span className="absolute left-0 bottom-0 h-1 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* ... rest of the mobile menu content ... */}
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
-    </motion.nav>
-  );
-}
+              <motion.div
+                variants={linkVariants}
+                className="flex flex-col space-y-6 w-full items-center"
+              >
+                {links.map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    className="relative group"
+                    variants={linkVariants}
+                    onClick={() => setIsMenuOpen(false)}
+                    whileHover={{ x: 10 }}
+                  >
+                    <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-500' : 'text-white'}`}>
+                      {link.name}
+                    </span>
+                    <span className="absolute left-0 bottom-0 h-1 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
+                  </motion.a>
+                ))}
+              </motion.div>
+              {/* Toggle button in mobile menu */}
+              <motion.button
+                onClick={toggleDarkMode}
+                className="mt-8 p-2 rounded-full hover:bg-accent transition-colors"
+                whileHover={{ scale: 1.1 }}
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? (
+                  <Sun className="w-5 h-5 text-yellow-500" />
+                ) : (
+                  <Moon className="w-5 h-5 text-white" />
+                )}
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      </motion.nav>
+    );
+  }
