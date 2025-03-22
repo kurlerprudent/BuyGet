@@ -59,7 +59,7 @@ export default function Page() {
     <div className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
       <div className="max-w-5xl mx-auto py-10 pt-28 pb-25 px-4">
         {/* Back Link */}
-        <Link href="/services">
+        <Link href="/Services">
           <p className="text-pink-400 hover:underline mb-4 cursor-pointer">
             &larr; Back to Services
           </p>

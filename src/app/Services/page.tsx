@@ -1,5 +1,5 @@
 
-"use client"
+
 
 import { CTASection } from "@/components/CtaSection";
 import ProjectsSlider from "@/components/projectsSlider";

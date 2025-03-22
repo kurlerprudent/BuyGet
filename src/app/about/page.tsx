@@ -1,4 +1,4 @@
-"use client";
+
 
 import OurStoryCoreValues from "@/components/aboutCoreValues";
 import HeroSection from "@/components/aboutHero";

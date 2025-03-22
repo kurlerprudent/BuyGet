@@ -1,4 +1,4 @@
-"use client";
+
 
 import { ClientMarquee } from "@/components/clientMarquee";
 import { CTASection } from "@/components/CtaSection";
