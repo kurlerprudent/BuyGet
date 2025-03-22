@@ -6,11 +6,11 @@ import Image from "next/image";
 const executives = [
   {
     id: 1,
-    name: "Mr. H",
-    title: "Chief Executive Officer (CEO)",
+    name: "Mr. Joshua Elson",
+    title: "Founder and Executive Director",
     description:
       "Provides overall leadership, strategic vision, and corporate governance. Leads innovation and global expansion. Oversees daily operations, resource management, and business efficiency. Ensures cross-departmental collaboration.",
-    image: "/leaders/ceo.jpg",
+    image: "/test_1.jpg",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const executives = [
     title: "Chief Technology Officer (CTO)",
     description:
       "Leads technological innovations, AI development, and cybersecurity frameworks.",
-    image: "/leaders/cto.jpg",
+    image: "/test_1.jpg",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const executives = [
     title: "Chief Financial Officer and Legal (CF/LO) Officer",
     description:
       "Manages financial planning, investment strategies, and fiscal sustainability. Ensures revenue optimization.",
-    image: "/leaders/cfo.jpg",
+    image: "/test_1.jpg",
   },
 ];
 

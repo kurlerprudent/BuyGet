@@ -1,3 +1,5 @@
+"use client"
+
 import Head from "next/head";
 import { services } from "@/data/services";
 import ServiceCard from "./servicesCard";

@@ -13,7 +13,7 @@ const shsweb =  {
   name: "SHSWEB",
   description: "Technological solutions for senior high schools.",
   category: "Web",
-  bgImage: "/assets/shsweb.jpg",
+  bgImage: "/assets/shsweb.jpeg",
   caseStudy: {
     challenges: "Schools needed modern digital tools to support learning and communication.",
     solutions: "We built interactive web applications tailored for educational environments.",

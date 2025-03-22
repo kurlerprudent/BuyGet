@@ -4,6 +4,9 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-
 import { Menu, X, Zap, Sun, Moon, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,16 +93,23 @@ export function Navbar() {
     >
       <div className="bg-background/80 backdrop-blur-md border-b border-border/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link href='/'>
           <motion.div
             className="flex items-center cursor-pointer"
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 300 }}
+            
           >
-            <Zap className="mr-2 w-6 h-6 text-pink-500" />
-            <span className="text-3xl font-extrabold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-              BuyGet
-            </span>
+           
+            <Image
+              src='/assets/buygetLogo.jpeg'
+              alt='Logo'
+              width={40}
+              height={40}
+
+            />
           </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

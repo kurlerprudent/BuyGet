@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useTransform, useScroll, AnimatePresence } from 'framer-motion';
+import { motion, useTransform, useScroll } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -10,27 +10,12 @@ export function HeroSection() {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const taglines = [
     "Empowering Digital Africa",
     "Tech Solutions for Tomorrow",
     "Smart Ecosystem Builders",
   ];
-
-  // Dark mode detection
-  useEffect(() => {
-    const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-    
-    checkDarkMode();
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
 
   // Typing effect
   useEffect(() => {
@@ -62,17 +47,15 @@ export function HeroSection() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 250 } },
   };
 
-  // Dynamic background styles
-  const bgGradient = isDarkMode 
-    ? `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`
-    : `linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.6))`;
+  // Dark mode background gradient always used
+  const bgGradient = `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`;
 
   return (
     <section className="relative h-screen">
       <motion.div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `${bgGradient}, url('/hero-bg.jpg')`,
+          backgroundImage: `${bgGradient}, url('/assets/lg5.jpeg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y: yPos,
@@ -90,8 +73,7 @@ export function HeroSection() {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide
-                         text-gray-900 dark:text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white"
             >
               {currentText.split('').map((char, index) => (
                 <motion.span
@@ -102,14 +84,11 @@ export function HeroSection() {
                   {char}
                 </motion.span>
               ))}
-              <span className={`ml-1 w-[3px] h-[1em] inline-block animate-pulse ${
-                isDarkMode ? 'bg-white' : 'bg-gray-900'
-              }`} />
+              <span className="ml-1 w-[3px] h-[1em] inline-block animate-pulse bg-white" />
             </motion.div>
 
             <motion.p
-              className="text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed
-                         text-gray-700 dark:text-gray-300"
+              className="text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
@@ -143,8 +122,7 @@ export function HeroSection() {
               href="/contact"
               className="px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-xl transition-all 
                         text-base md:text-lg font-semibold text-center
-                        border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-400
-                        text-gray-900 dark:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50"
+                        border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
               whileHover={{ scale: 1.03 }}
             >
               Start Partnership
@@ -156,22 +134,15 @@ export function HeroSection() {
             animate={{ y: [0, 15, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
           >
-            <ChevronDown className="h-8 w-8 md:h-12 md:w-12 text-gray-900/80 dark:text-white/80 
-                                    hover:text-gray-900 dark:hover:text-white cursor-pointer" />
+            <ChevronDown className="h-8 w-8 md:h-12 md:w-12 text-white/80 hover:text-white cursor-pointer" />
           </motion.div>
         </div>
       </div>
 
-      {/* Dynamic gradient overlay */}
+      {/* Dark mode gradient overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className={`absolute inset-0 bg-gradient-to-b ${
-          isDarkMode 
-            ? 'from-black/30 via-black/50 to-black/70' 
-            : 'from-white/30 via-white/50 to-white/70'
-        }`} />
-        <div className={`absolute inset-0 bg-[radial-gradient(circle,transparent_20%,${
-          isDarkMode ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.7)'
-        }_80%)]`} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.7)_80%)]" />
       </div>
     </section>
   );
