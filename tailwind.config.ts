@@ -20,6 +20,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      lineClamp: {
+        2: '2',
+      },
     },
   },
   plugins: [],

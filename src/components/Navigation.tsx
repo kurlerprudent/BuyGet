@@ -21,6 +21,7 @@ export function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/Services' },
     { name: 'Projects', href: '/projects' },
+    { name: 'News & Events ', href: '/news-events' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
@@ -93,23 +94,33 @@ export function Navbar() {
     >
       <div className="bg-background/80 backdrop-blur-md border-b border-border/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href='/'>
-          <motion.div
-            className="flex items-center cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            
-          >
-           
+        <Link href="/" passHref>
+        <motion.div
+          className="flex items-center gap-2 group"
+          whileHover={{ scale: 1.05, rotate: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+        >
+          <motion.div whileHover={{ rotate: 15 }}>
             <Image
               src='/assets/buygetLogo.jpeg'
-              alt='Logo'
-              width={40}
-              height={40}
-
+              alt='BuyGet Logo'
+              width={48}
+              height={48}
+              className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
             />
           </motion.div>
-          </Link>
+          
+          <span className="text-2xl font-bold tracking-tight relative">
+            <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
+              BuyGet
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10">
+              BuyGet
+            </span>
+          </span>
+        </motion.div>   
+      </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
