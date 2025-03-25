@@ -27,7 +27,7 @@ export default function ProjectsPage() {
   return (
     <>
       <div>
-        <title>Our Projects | My Company</title>
+        <title>Our Solutions</title>
         <meta
           name="description"
           content="Discover our latest projects showcasing innovative solutions."
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
             isDarkMode ? "text-white" : "text-black"
           }`}
         >
-          Our Projects
+          Our Solutions
         </h1>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (

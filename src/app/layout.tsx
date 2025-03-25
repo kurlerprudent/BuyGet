@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Company",
+  title: "BuyGet ICT Solutions",
   description: "Innovative solutions for modern businesses",
 };
 

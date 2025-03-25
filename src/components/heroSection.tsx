@@ -24,7 +24,8 @@ export function HeroSection() {
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         setCurrentText(currentTagline.substring(0, currentText.length + 1));
-        if (currentText === currentTagline) setTimeout(() => setIsDeleting(true), 1500);
+        if (currentText === currentTagline)
+          setTimeout(() => setIsDeleting(true), 1500);
       } else {
         setCurrentText(currentTagline.substring(0, currentText.length - 1));
         if (currentText === '') {
@@ -47,7 +48,7 @@ export function HeroSection() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 250 } },
   };
 
-  // Dark mode background gradient always used
+  // Dark mode background gradient
   const bgGradient = `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`;
 
   return (
@@ -73,22 +74,33 @@ export function HeroSection() {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-normal tracking-wide text-white w-full px-4 break-words whitespace-pre-wrap"
             >
-              {currentText.split('').map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={charVariants}
-                  className="inline-block mx-0.5"
-                >
-                  {char}
-                </motion.span>
-              ))}
-              <span className="ml-1 w-[3px] h-[1em] inline-block animate-pulse bg-white" />
+              <div className="max-w-4xl mx-auto">
+                {currentText
+                  .split(' ')
+                  .map((word, wordIndex) => (
+                    <span key={wordIndex} className="inline-block whitespace-nowrap">
+                      {word.split('').map((char, index) => (
+                        <motion.span
+                          key={index}
+                          variants={charVariants}
+                          className="inline-block mx-[0.05em]"
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                      {/* Add a space after each word */}
+                      <span>&nbsp;</span>
+                    </span>
+                  ))
+                }
+                <span className="ml-1 w-[3px] h-[1em] inline-block animate-pulse bg-white" />
+              </div>
             </motion.div>
 
             <motion.p
-              className="text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-gray-300"
+              className="text-base sm:text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
@@ -104,7 +116,7 @@ export function HeroSection() {
             transition={{ delay: 1.2 }}
           >
             <motion.a
-              href="/Services"
+              href="/projects"
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
                         rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
                         text-base md:text-lg font-semibold group text-white"
@@ -139,7 +151,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Dark mode gradient overlay */}
+      {/* Gradient overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
         <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.7)_80%)]" />
