@@ -137,7 +137,7 @@ export function HeroSection() {
                         border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
               whileHover={{ scale: 1.03 }}
             >
-              Start Partnership
+              Join Buyget Network
             </motion.a>
           </motion.div>
 

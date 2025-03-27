@@ -55,7 +55,7 @@ const ProjectsPreview = () => {
     <section className={`py-24 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-gray-100'}`}>
       <div className="container mx-auto px-4">
         <h2 className={`text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-          Our Projects
+          Our Inventions
         </h2>
         <motion.div
           className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
@@ -105,7 +105,7 @@ const ProjectsPreview = () => {
         <div className="mt-12 flex justify-center">
           <Link href="/projects" passHref>
             <p className={`px-8 py-3 font-semibold rounded-full shadow-xl transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white`}>
-              View All Projects
+              View All Inventions
             </p>
           </Link>
         </div>
