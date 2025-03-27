@@ -15,7 +15,7 @@ const HeroSection = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
         <Image
-          src="/about-hero-bg-1.jpg"
+          src="/assets/aboutbg.jpeg"
           alt="Background"
           fill
           priority
