@@ -131,7 +131,7 @@ export function Navbar() {
                 whileHover={{ y: -2 }}
                 animate={pathname === link.href ? activeLinkAnimation : {}}
               >
-                <span className={`text-lg font-medium ${pathname === link.href ? 'text-pink-500' : darkMode ? 'text-white' : 'text-gray-400'}`}>
+                <span className={`text-xl font-bold font-medium ${pathname === link.href ? 'text-pink-500' : darkMode ? 'text-white' : 'text-gray-400'}`}>
                   {link.name}
                 </span>
                 <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
