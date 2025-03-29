@@ -7,7 +7,7 @@ import Image from 'next/image';
 const projectsPreview = [
   {
     title: "SHSWEB",
-    description: "Develops technological solutions for senior high schools.",
+    description: "Develops technological solutions for  schools.",
     category: "Technology and Software Solutions",
     bgImage:  "/assets/shsweb.jpeg",
   },

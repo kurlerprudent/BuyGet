@@ -9,11 +9,17 @@ import Link from 'next/link';
 
 
 export function Navbar() {
+  const pathname = usePathname();
+  
+  // Hide navbar if path contains 'form'
+  if (pathname?.includes('form')) {
+    return null;
+  }
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(true); // Default to dark mode
-  const pathname = usePathname();
   const { scrollY } = useScroll();
 
   const links = [

@@ -53,19 +53,19 @@ const ContactPage = () => {
             <div className={`p-8 ${isDarkMode ? "bg-white/5 border border-white/10" : "bg-white/70 border border-gray-300"} backdrop-blur-sm rounded-xl hover:border-white/20 transition-all`}>
               <MapPinIcon className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-black"} mb-2`}>Our Office</h3>
-              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>Accra<br />Ghana</p>
+              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>Accra - Oyarifa  <br />Ghana</p>
             </div>
 
             <div className={`p-8 ${isDarkMode ? "bg-white/5 border border-white/10" : "bg-white/70 border border-gray-300"} backdrop-blur-sm rounded-xl hover:border-white/20 transition-all`}>
               <PhoneIcon className="w-8 h-8 text-blue-400 mb-4" />
               <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-black"} mb-2`}>Phone</h3>
-              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>+233 3578493<br />Mon-Sat, 8am-5pm PST</p>
+              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}> 030 80944 68<br />Mon-Sat, 8am-5pm PST</p>
             </div>
 
             <div className={`p-8 ${isDarkMode ? "bg-white/5 border border-white/10" : "bg-white/70 border border-gray-300"} backdrop-blur-sm rounded-xl hover:border-white/20 transition-all`}>
               <EnvelopeIcon className="w-8 h-8 text-pink-400 mb-4" />
               <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-black"} mb-2`}>Email</h3>
-              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>buygetsolutions@.com<br />response within 24 hours</p>
+              <p className={`text-gray-300 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>Info@buyget.co<br />response within 24 hours</p>
             </div>
           </motion.div>
 

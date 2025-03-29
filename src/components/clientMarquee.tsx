@@ -5,13 +5,13 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 
 const clients = [
-  { name: 'Safaricom', logo: '/logos/safaricom.png' },
-  { name: 'KCB Group', logo: '/logos/kcb-group.png' },
-  { name: 'Ministry of Education', logo: '/logos/moe.png' },
-  { name: 'National Media', logo: '/logos/national-media.jpeg' },
-  { name: 'Ghana Education service', logo: '/logos/ges.png' },
-  { name: 'Telkom Kenya', logo: '/logos/telkom.png' },
-  { name: 'EABL', logo: '/logos/eabl.png' },
+  { name: 'Ghana edtech Aliance', logo: '/assets/geda.jpeg' },
+  { name: 'Education Watch Africa', logo: '/assets/eduwatch.jpg' },
+  { name: 'Quivertech', logo: '/assets/quiver.jpeg' },
+  { name: 'Shsweb', logo: '/assets/shsweb.jpeg' },
+  { name: 'Inovic', logo: '/assets/inovic.webp' },
+  { name: 'Itectona', logo: '/assets/itectona.png' },
+  { name: 'Nrecom', logo: '/assets/nrecom.jpeg' },
 ];
 
 export function ClientMarquee() {
