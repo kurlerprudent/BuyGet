@@ -56,7 +56,7 @@ export function HeroSection() {
       <motion.div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `${bgGradient}, url('/assets/lg5.jpeg')`,
+          backgroundImage: `${bgGradient}, url('/assets/home.jpeg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y: yPos,

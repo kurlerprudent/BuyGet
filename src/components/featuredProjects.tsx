@@ -94,9 +94,7 @@ const ProjectsPreview = () => {
                   <p className={`mb-4 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
                     {project.description}
                   </p>
-                  <span className={`text-sm uppercase tracking-wide ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
-                    {project.category}
-                  </span>
+                  
                 </div>
               </motion.div>
             </Link>
