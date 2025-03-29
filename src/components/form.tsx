@@ -4,6 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useFormStore } from './FormStore';
+import { motion } from 'framer-motion';
+import { ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -17,7 +20,8 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ className }: { className?: string }) {
+    const router = useRouter();
   const { setFormData } = useFormStore();
   const {
     register,
@@ -37,6 +41,23 @@ export default function RegistrationForm() {
   const currentProject = watch('currentProject');
 
   return (
+    <div>
+
+<motion.button
+      onClick={() => router.back()}
+      className={`group fixed bottom-8 right-8 z-50 flex items-center gap-2 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 p-4 shadow-lg hover:shadow-xl ${className}`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+      aria-label="Go back"
+    >
+      <ChevronLeft className="h-6 w-6 text-white transition-transform group-hover:-translate-x-1" />
+      <span className="hidden text-sm font-semibold text-white md:block">
+        Back
+      </span>
+    </motion.button>
+        
+   
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
@@ -188,6 +209,7 @@ export default function RegistrationForm() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }
