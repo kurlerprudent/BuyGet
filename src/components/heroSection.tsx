@@ -131,7 +131,7 @@ export function HeroSection() {
             </motion.a>
             
             <motion.a
-              href="/contact"
+              href="/form"
               className="px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-xl transition-all 
                         text-base md:text-lg font-semibold text-center
                         border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"

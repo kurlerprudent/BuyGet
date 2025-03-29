@@ -1,26 +1,30 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap, Sun, Moon, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 export function Navbar() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(true); // Default to dark mode
-  const pathname = usePathname();
+  const [darkMode, setDarkMode] = useState(true);
   const { scrollY } = useScroll();
+
+  // Return null if not on form page
+  if (pathname !== '/form') {
+    return null;
+  }
 
   const links = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Inventions', href: '/projects' },
-    { name: 'News & Events ', href: '/news-events' },
+    { name: 'News & Events', href: '/news-events' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
@@ -38,7 +42,6 @@ export function Navbar() {
   // Dark mode handling
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
-    // Default to dark mode if no theme stored
     const initialDarkMode = storedTheme ? storedTheme === 'dark' : true;
     setDarkMode(initialDarkMode);
     document.documentElement.classList.toggle('dark', initialDarkMode);
@@ -93,33 +96,32 @@ export function Navbar() {
     >
       <div className="bg-background/80 backdrop-blur-md border-b border-border/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" passHref>
-        <motion.div
-          className="flex items-center gap-2 group"
-          whileHover={{ scale: 1.05, rotate: -2 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-        >
-          <motion.div whileHover={{ rotate: 15 }}>
-            <Image
-              src='/assets/buygetLogo1.jpeg'
-              alt='BuyGet Logo'
-              width={48}
-              height={48}
-              className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            />
-          </motion.div>
-          
-          <span className="text-2xl font-bold tracking-tight relative">
-            <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
-              BuyGet
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10">
-              BuyGet
-            </span>
-          </span>
-        </motion.div>   
-      </Link>
+          <Link href="/" passHref>
+            <motion.div
+              className="flex items-center gap-2 group"
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+            >
+              <motion.div whileHover={{ rotate: 15 }}>
+                <Image
+                  src='/assets/buygetLogo1.jpeg'
+                  alt='BuyGet Logo'
+                  width={48}
+                  height={48}
+                  className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                />
+              </motion.div>
+              <span className="text-2xl font-bold tracking-tight relative">
+                <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
+                  BuyGet
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10">
+                  BuyGet
+                </span>
+              </span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -175,7 +177,6 @@ export function Navbar() {
             onClick={handleBackdropClick}
           >
             <div className="relative container mx-auto px-4 py-8 h-full flex flex-col items-center">
-              {/* Close Button Added Here */}
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="absolute top-4 right-4 text-white hover:text-pink-500 transition-colors"
@@ -204,7 +205,7 @@ export function Navbar() {
                   </motion.a>
                 ))}
               </motion.div>
-              {/* Toggle button in mobile menu */}
+
               <motion.button
                 onClick={toggleDarkMode}
                 className="mt-8 p-2 rounded-full hover:bg-accent transition-colors"
@@ -221,6 +222,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-      </motion.nav>
-    );
-  }
+    </motion.nav>
+  );
+}

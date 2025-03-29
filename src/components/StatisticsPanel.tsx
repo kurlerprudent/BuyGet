@@ -7,10 +7,10 @@ import { Rocket, BarChart, Users, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const stats = [
-  { icon: Rocket, value: 150, suffix: '+', label: 'Projects Completed', iconColor: 'text-blue-400' },
-  { icon: BarChart, value: 98.7, suffix: '%', label: 'Client Satisfaction', iconColor: 'text-green-400' },
+  { icon: Rocket, value: 43, suffix: '+', label: 'Projects Completed', iconColor: 'text-blue-400' },
+  { icon: BarChart, value: 99.7, suffix: '%', label: 'Client Satisfaction', iconColor: 'text-green-400' },
   { icon: Users, value: 2.5, suffix: 'M', label: 'Active Users', iconColor: 'text-purple-400' },
-  { icon: Globe, value: 15, suffix: '+', label: 'Countries Served', iconColor: 'text-orange-400' },
+  { icon: Globe, value: 3, suffix: '+', label: 'Countries Served', iconColor: 'text-orange-400' },
 ];
 
 function AnimatedNumber({ value }: { value: number }) {
