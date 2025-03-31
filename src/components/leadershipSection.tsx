@@ -159,8 +159,8 @@ const LeadershipSection = () => {
           </div>
         </div>
 
-         {/* Board */}
-         <div className="mb-16">
+             {/* Board Section with Flip Cards */}
+        <div className="mb-16">
           <motion.h3
             className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
             initial={{ opacity: 0, y: 20 }}
@@ -171,27 +171,72 @@ const LeadershipSection = () => {
             Board
           </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:px-6">
-            {board.map((exec) => (
+            {board.map((member) => (
               <motion.div
-                key={exec.id}
-                className={`rounded-xl p-6 shadow-sm hover:shadow-lg border ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} backdrop-blur-md text-center transition-all`}
+                key={member.id}
+                className="h-64 perspective-1000"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border border-white/30">
-                  <Image
-                    src={exec.image}
-                    alt={exec.name}
-                    width={96}
-                    height={96}
-                    className="object-cover"
-                  />
+                <div className="relative w-full h-full preserve-3d">
+                  <motion.div
+                    className="w-full h-full relative transition-transform duration-500"
+                    whileHover={{ rotateY: 180 }}
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    {/* Front Side */}
+                    <div className={`absolute w-full h-full backface-hidden rounded-xl p-6 shadow-lg border ${
+                      isDarkMode 
+                        ? 'border-white/20 bg-gray-800/50' 
+                        : 'border-gray-300 bg-white/50'
+                    } backdrop-blur-md flex flex-col items-center justify-center`}
+                         style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}>
+                      <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-white/30">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={96}
+                          height={96}
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} text-center`}>
+                        {member.name}
+                      </h4>
+                      <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-center`}>
+                        {member.title}
+                      </p>
+                    </div>
+
+                    {/* Back Side */}
+                    <div className={`absolute w-full h-full backface-hidden rounded-xl p-6 shadow-lg border ${
+                      isDarkMode 
+                        ? 'border-white/20 bg-gray-800/50' 
+                        : 'border-gray-300 bg-white/50'
+                    } backdrop-blur-md flex flex-col items-center justify-center`}
+                         style={{ 
+                           WebkitBackfaceVisibility: 'hidden',
+                           backfaceVisibility: 'hidden',
+                           transform: 'rotateY(180deg)',
+                         }}>
+                      <div className="text-center">
+                        <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-2`}>
+                          {member.name}
+                        </h4>
+                        <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-3`}>
+                          {member.title}
+                        </p>
+                        {member.description && (
+                          <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                            {member.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-                <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>{exec.name}</h4>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>{exec.title}</p>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{exec.description}</p>
               </motion.div>
             ))}
           </div>
