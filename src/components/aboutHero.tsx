@@ -1,10 +1,34 @@
 "use client";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const yOffset = useTransform(scrollY, [0, 400], [0, 100]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Dark mode detection
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    checkDarkMode();
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Dynamic background settings
+  const bgImage = isDarkMode ? '/assets/lg5.jpeg' : '/assets/aboutbg.jpeg';
+  const bgOverlay = isDarkMode 
+    ? 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))'
+    : 'linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.5), transparent)';
 
   return (
     <section className="relative w-full flex items-center justify-center min-h-[80vh] md:max-h-[70vh] overflow-hidden">
@@ -13,16 +37,27 @@ const HeroSection = () => {
         className="absolute inset-0"
         style={{ y: yOffset }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
+        <div 
+          className="absolute inset-0 z-0"
+          style={{ backgroundImage: bgOverlay }}
+        />
         <Image
-          src="/assets/aboutbg.jpeg"
+          src={bgImage}
           alt="Background"
           fill
           priority
           quality={100}
-          className="object-cover"
+          className="object-cover z-0"
         />
       </motion.div>
+
+      {/* Dark mode specific overlays */}
+      {isDarkMode && (
+        <div className="absolute inset-0 pointer-events-none z-1">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.7)_80%)]" />
+        </div>
+      )}
 
       {/* Floating Gradient Accents */}
       <div className="absolute inset-0 pointer-events-none">

@@ -10,6 +10,27 @@ export function HeroSection() {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Dark mode detection
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Watch for changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const taglines = [
     "Empowering Digital Africa",
@@ -48,15 +69,18 @@ export function HeroSection() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 250 } },
   };
 
-  // Dark mode background gradient
-  const bgGradient = `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`;
+  // Dynamic background settings
+  const bgImage = isDarkMode ? '/assets/lg5.jpeg' : '/assets/aboutbg.jpeg';
+  const bgOverlay = isDarkMode 
+    ? `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`
+    : `linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.5), transparent)`;
 
   return (
     <section className="relative h-screen">
       <motion.div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `${bgGradient}, url('/assets/lg5.jpeg')`,
+          backgroundImage: `${bgOverlay}, url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y: yPos,
@@ -90,7 +114,6 @@ export function HeroSection() {
                           {char}
                         </motion.span>
                       ))}
-                      {/* Add a space after each word */}
                       <span>&nbsp;</span>
                     </span>
                   ))
@@ -151,11 +174,13 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.7)_80%)]" />
-      </div>
+      {/* Conditional gradient overlays */}
+      {isDarkMode && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.7)_80%)]" />
+        </div>
+      )}
     </section>
   );
 }
