@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type NewsEvent = {
   id: number;
@@ -104,9 +105,11 @@ const NewsEventsPage = () => {
                 BuyGet Innovate 2025 Conference
               </h2>
               <div className="flex gap-4">
+                <Link href="/form">
                 <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-lg transition-all">
                   Register Now
                 </button>
+                </Link>
                 <button className={`border ${isDarkMode ? "border-gray-300 hover:border-pink-400" : "border-gray-600 hover:border-pink-500"} ${isDarkMode ? "text-gray-300 hover:text-pink-400" : "text-gray-600 hover:text-pink-500"} px-6 py-3 rounded-lg transition-all`}>
                   Learn More
                 </button>

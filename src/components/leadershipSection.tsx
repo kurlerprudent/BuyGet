@@ -30,7 +30,7 @@ const board = [
     title: "education UK",
     description:
       "work audit and finance",
-    image: "/test_1.jpg",
+    image: "/assets/avatar.png",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ const board = [
     title: " Clo of Northern command",
     description:
       "And operations",
-    image: "/test_1.jpg",
+    image: "/assets/avatar.png",
   },
   {
     id:3,
@@ -52,7 +52,7 @@ const board = [
     name:"Mr.Honu Christian",
     title:" non Executive Director",
     description:'Councillor',
-    image:"/test_1.jpg"
+    image:"/assets/avatar.png"
 
   }
 ];
