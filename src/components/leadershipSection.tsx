@@ -52,7 +52,7 @@ const board = [
     name:"Mr.Honu Christian",
     title:" non Executive Director",
     description:'Councillor',
-    image:"/assets/avatar.png"
+    image:"/assets/hon.jpeg"
 
   }
 ];
