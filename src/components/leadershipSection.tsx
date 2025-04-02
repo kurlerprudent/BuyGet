@@ -11,7 +11,7 @@ const executives = [
     title: "Founder and Executive Director",
     description:
       "Provides overall leadership, strategic vision, and corporate governance. ",
-    image: "/test_1.jpg",
+    image: "/assets/josh.jpeg",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const executives = [
     title: "Chief Technology Officer (CTO)",
     description:
       "Leads technological innovations, AI development, and cybersecurity frameworks.",
-    image: "/test_1.jpg",
+    image: "/assets/christiain.jpeg",
   }
 ];
 
@@ -44,7 +44,7 @@ const board = [
     id:3,
     name: "Lt lawyer lawyer he",
     title:"lawyer and legal officer",
-    image:"/test_1.jpg"
+    image:"/assets/secetery.jpeg"
 
   },
   {
