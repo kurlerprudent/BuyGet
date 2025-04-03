@@ -65,7 +65,7 @@ export function Navbar() {
           >
             <motion.div whileHover={{ rotate: 15 }}>
               <Image
-                src='/assets/lg6.png'
+                src='/assets/lg6.jpeg'
                 alt='BuyGet Logo'
                 width={48}
                 height={48}
