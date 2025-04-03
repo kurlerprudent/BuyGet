@@ -162,7 +162,7 @@ export function Navbar() {
 <AnimatePresence>
   {isMenuOpen && (
     <motion.div
-      className="md:hidden fixed inset-0 bg-pink-100/95 backdrop-blur-lg"
+      className="md:hidden fixed inset-0 bg-gradient-to-br from-pink-500/95 via-pink-60/80 to-orange-100/95 backdrop-blur-lg"
       initial="closed"
       animate="open"
       exit="closed"
@@ -172,7 +172,7 @@ export function Navbar() {
       <div className="relative container mx-auto px-4 py-8 h-full flex flex-col items-center">
         <button
           onClick={() => setIsMenuOpen(false)}
-          className="absolute top-4 right-4 text-gray-800 hover:text-pink-600 transition-colors"
+          className="absolute top-4 right-4 text-gray-700 hover:text-pink-600 transition-colors"
           aria-label="Close menu"
         >
           <X size={24} />
@@ -191,10 +191,10 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(false)}
               whileHover={{ x: 10 }}
             > 
-              <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-600' : 'text-gray-800'}`}>
+              <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-600' : 'text-gray-700'}`}>
                 {link.name}
               </span>
-              <span className="absolute left-0 bottom-0 h-1 w-0 bg-gradient-to-r from-pink-500 to-orange-400 group-hover:w-full transition-all duration-300" />
+              <span className="absolute left-0 bottom-0 h-1 w-0 bg-gradient-to-r from-pink-400 to-orange-300 group-hover:w-full transition-all duration-300" />
             </motion.a>
           ))}
         </motion.div>
@@ -204,7 +204,7 @@ export function Navbar() {
           <motion.a 
             href="/contact" 
             whileHover={{ scale: 1.1 }} 
-            className="text-gray-800 transition-all duration-300 ease-in hover:text-pink-600"
+            className="text-gray-700 transition-all duration-300 ease-in hover:text-pink-600"
             title="Call us"
           >
             <Phone className="w-6 h-6" />
@@ -212,7 +212,7 @@ export function Navbar() {
           <motion.a 
             href="mailto:info@example.com" 
             whileHover={{ scale: 1.1 }} 
-            className="text-gray-800 transition-all duration-300 ease-in hover:text-pink-600"
+            className="text-gray-700 transition-all duration-300 ease-in hover:text-pink-600"
             title="Email us"
           >
             <Mail className="w-6 h-6" />
@@ -220,7 +220,7 @@ export function Navbar() {
           <motion.a 
             href="https://wa.me/message/73UEIPABQIORO1" 
             whileHover={{ scale: 1.1 }} 
-            className="text-gray-800 transition-all duration-300 ease-in hover:text-pink-600"
+            className="text-gray-700 transition-all duration-300 ease-in hover:text-pink-600"
             title="WhatsApp us"
           >
             <FaWhatsapp className="w-6 h-6" />
@@ -228,7 +228,7 @@ export function Navbar() {
           <motion.a 
             href="https://www.instagram.com/buyget_ict_solutions/profilecard/?igsh=MTA2bG94bjZzNHExMA==" 
             whileHover={{ scale: 1.1 }} 
-            className="text-gray-800 transition-all duration-300 ease-in hover:text-pink-600"
+            className="text-gray-700 transition-all duration-300 ease-in hover:text-pink-600"
             title="Instagram"
           >
             <Instagram className="w-6 h-6" />
@@ -236,7 +236,7 @@ export function Navbar() {
           <motion.a 
             href="https://www.linkedin.com/in/buyget-ict-solutions-36340435a" 
             whileHover={{ scale: 1.1 }} 
-            className="text-gray-800 transition-all duration-300 ease-in hover:text-pink-600"
+            className="text-gray-700 transition-all duration-300 ease-in hover:text-pink-600"
             title="LinkedIn"
           >
             <Linkedin className="w-6 h-6" />
