@@ -31,7 +31,7 @@ export const projects: Project[] = [
   {
     id: 2,
     slug: "softica",
-    name: "Web",
+    name: "Softica",
     description: "Enterprise software development and solutions.",
     category: "Enterprise",
     bgImage: "/assets/softica.jpg",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
   {
     id: 3,
     slug: "inovic",
-    name: "AI",
+    name: "Inovic",
     description: "AI & robotics research and development.",
     category: "AI/Robotics",
     bgImage: "/assets/inovic.jpg",

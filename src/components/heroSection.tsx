@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export function HeroSection() {
   const { scrollY } = useScroll();
   const yPos = useTransform(scrollY, [0, 500], [0, 100]);
-  
+
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -50,11 +50,12 @@ export function HeroSection() {
 
   // Always use dark mode settings
   const bgImage = '/assets/lg2.jpeg';
-  const bgOverlay = `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`;
+  // Lighter overlay by reducing the alpha value
+  const bgOverlay = `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4))`; 
 
   return (
     <section className="relative h-screen">
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `${bgOverlay}, url(${bgImage})`,
@@ -118,23 +119,23 @@ export function HeroSection() {
             <motion.a
               href="/projects"
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
-                        rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
-                        text-base md:text-lg font-semibold group text-white"
-              whileHover={{ 
+                                rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
+                                text-base md:text-lg font-semibold group text-white"
+              whileHover={{
                 scale: 1.03,
                 boxShadow: '0 4px 24px rgba(255,255,255,0.1)',
               }}
             >
               Explore Innovations
               <ChevronDown className="ml-2 h-4 w-4 md:h-5 md:w-5 animate-bounce group-hover:translate-y-0.5 
-                                      transition-transform text-white" />
+                                                                  transition-transform text-white" />
             </motion.a>
-            
+
             <motion.a
               href="/form"
               className="px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-xl transition-all 
-                        text-base md:text-lg font-semibold text-center
-                        border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
+                                text-base md:text-lg font-semibold text-center
+                                border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
               whileHover={{ scale: 1.03 }}
             >
               Join Buyget Network

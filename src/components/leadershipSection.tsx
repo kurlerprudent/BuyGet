@@ -9,8 +9,7 @@ const executives = [
     id: 1,
     name: "Mr. Joshua Elson",
     title: "Founder and Executive Director",
-    description:
-      "Founder and Visionary of Buyget ICT Solutions, passionate about Africa’s technological advancement and development. He holds a BSc in Information Technology from the University of Ghana, currently pursuing his Master’s degree in Cybersecurity and Forensics. He is a certified Pro Backend Developer from ALX, he also runs multiple agribusiness firms. Previously, he served as a Public Relations Officer with the Ghana Armed Forces Northern Command during his national service.",
+description: `Founder and Visionary of Buyget ICT Solutions, passionate about Africa’s technological advancement and development. He holds a BSc in Information Technology from the University of Ghana, currently pursuing his Master’s degree in Cybersecurity and Forensics. He is a certified Pro Backend Developer from ALX, he also runs multiple agribusiness firms. Previously, he served as a Public Relations Officer with the Ghana Armed Forces Northern Command during his national service.`,
     image: "/assets/josh.jpeg",
   },
   {
@@ -42,9 +41,9 @@ const board = [
   },
   {
     id: 3,
-    name: "Lt lawyer lawyer he",
+    name: "SADAT SUGRI LARYEA ESQ",
     title: "Legal Lead & Secretary",
-    description: "Provides legal advice and representation",
+    description: "A highly motivated and disciplined individual with a strong educational background, in Professional Law  (Ghana School of Law & LLB), and  military studies. Proven professional experience as Command Legal Advisor at Northern Command, GAF, Naval Legal Officer at GHQ, and Associate at Cromwell Gray LLP Attorneys and Counsellors at Law.",
     image: "/assets/secetery.jpeg",
   },
   {
@@ -52,7 +51,7 @@ const board = [
     name: "Mr. Honu Christian",
     title: "Non-Executive Director",
     description:
-      "Experienced counsellor and visionary leader dedicated to fostering growth and development. He developed his leadership expertise through senior roles at Volta Aluminium Company Ghana and Spiro Ghana Limited. By combining his counselling knowledge with strategic leadership, he enables individuals and organizations to reach their full potential.",
+      "A seasoned counsellor and transformative leader, leveraging his expertise to drive positive change.  He honed his leadership skills through notable roles as Assistant Manager at Volta Aluminium Company Ghana and Spiro Ghana Limited. His unique blend of counselling expertise and leadership acumen empowers individuals and organizations to thrive.",
     image: "/assets/honu.jpeg",
   },
 ];

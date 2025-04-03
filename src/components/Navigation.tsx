@@ -1,6 +1,6 @@
 "use client";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, Mail,  Linkedin, Instagram } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Phone, Mail, Linkedin, Instagram } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -15,25 +15,11 @@ export function Navbar() {
   }
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
-
   const links = [
     { name: 'Inventions', href: '/projects' },
     { name: 'About Us', href: '/about' },
     { name: 'News & Events', href: '/news-events' },
   ];
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest > previous && latest > 100) {
-      setIsHidden(true);
-    } else if (latest < previous) {
-      setIsHidden(false);
-    }
-    setIsScrolled(latest > 50);
-  });
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -68,118 +54,107 @@ export function Navbar() {
   };
 
   return (
-    <motion.nav
-      className={`fixed w-full z-50 ${isScrolled ? 'shadow-lg' : ''}`}
-      animate={{ y: isHidden ? -100 : 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-    >
-      <div className={`backdrop-blur-md border-b ${
-          isScrolled 
-            ? 'bg-white/80 border-gray-200' 
-            : 'bg-transparent border-transparent'
-      }`}>
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" passHref>
-            <motion.div
-              className="flex items-center gap-2 group"
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-            >
-              <motion.div whileHover={{ rotate: 15 }}>
-                <Image
-                  src='/assets/lg6.png'
-                  alt='BuyGet Logo'
-                  width={48}
-                  height={48}
-                  className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                />
-              </motion.div>
-              <span className="text-2xl font-bold tracking-tight relative">
-                <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
-                  BuyGet
-                </span>
-              </span>
-            </motion.div>   
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 flex-grow justify-center">
-            {links.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="relative group"
-                whileHover={{ y: -2 }}
-                animate={pathname === link.href ? activeLinkAnimation : {}}
-              >
-                <span className={`text-xl font-medium ${pathname === link.href ? 'text-pink-500' : 'text-gray-900'}`}>
-                  {link.name}
-                </span>
-                <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Right Icons */}
-<div className="hidden md:flex items-center space-x-6">
-  <motion.a 
-    href="/contact" 
-    whileHover={{ scale: 1.1 }} 
-    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#34A853]"
-    title="Call us"
-  >
-    <Phone className="w-5 h-5" />
-  </motion.a>
-  <motion.a 
-    href="mailto:info@example.com" 
-    whileHover={{ scale: 1.1 }} 
-    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#D93025]"
-    title="Email us"
-  >
-    <Mail className="w-5 h-5" />
-  </motion.a>
-  <motion.a 
-    href="https://wa.me/message/73UEIPABQIORO1" 
-    whileHover={{ scale: 1.1 }} 
-    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#25D366]"
-    title="WhatsApp us"
-  >
-    <FaWhatsapp className="w-5 h-5" />
-  </motion.a>
-  <motion.a 
-    href="https://www.instagram.com/buyget_ict_solutions/profilecard/?igsh=MTA2bG94bjZzNHExMA==" 
-    whileHover={{ scale: 1.1 }} 
-    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#E1306C]"
-    title="Instagram"
-  >
-    <Instagram className="w-5 h-5" />
-  </motion.a>
-  <motion.a 
-    href="https://www.linkedin.com/in/buyget-ict-solutions-36340435a" 
-    whileHover={{ scale: 1.1 }} 
-    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#0077B5]"
-    title="LinkedIn"
-  >
-    <Linkedin className="w-5 h-5" />
-  </motion.a>
-</div>
-
-
-          {/* Mobile Toggle */}
-          <motion.button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileHover={{ scale: 1.1 }}
-            aria-label="Toggle navigation menu"
+    <motion.nav className="sticky top-0 w-full z-50 bg-white shadow-lg">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" passHref>
+          <motion.div
+            className="flex items-center gap-2 group"
+            whileHover={{ scale: 1.05, rotate: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            {isMenuOpen ? (
-              <X size={24} className="text-gray-900" />
-            ) : (
-              <Menu size={24} className="text-gray-900" />
-            )}
-          </motion.button>
+            <motion.div whileHover={{ rotate: 15 }}>
+              <Image
+                src='/assets/lg6.png'
+                alt='BuyGet Logo'
+                width={48}
+                height={48}
+                className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              />
+            </motion.div>
+            <span className="text-2xl font-bold tracking-tight relative">
+              <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
+                BuyGet
+              </span>
+            </span>
+          </motion.div>   
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8 flex-grow justify-center">
+          {links.map((link) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              className="relative group"
+              whileHover={{ y: -2 }}
+              animate={pathname === link.href ? activeLinkAnimation : {}}
+            >
+              <span className={`text-xl font-medium ${pathname === link.href ? 'text-pink-500' : 'text-gray-900'}`}>
+                {link.name}
+              </span>
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
+            </motion.a>
+          ))}
         </div>
+
+        {/* Desktop Icons */}
+        <div className="hidden md:flex items-center space-x-6">
+          <motion.a 
+            href="/contact" 
+            whileHover={{ scale: 1.1 }} 
+            className="text-gray-900 transition-all duration-300 ease-in hover:text-[#34A853]"
+            title="Call us"
+          >
+            <Phone className="w-5 h-5" />
+          </motion.a>
+          <motion.a 
+            href="mailto:info@example.com" 
+            whileHover={{ scale: 1.1 }} 
+            className="text-gray-900 transition-all duration-300 ease-in hover:text-[#D93025]"
+            title="Email us"
+          >
+            <Mail className="w-5 h-5" />
+          </motion.a>
+          <motion.a 
+            href="https://wa.me/message/73UEIPABQIORO1" 
+            whileHover={{ scale: 1.1 }} 
+            className="text-gray-900 transition-all duration-300 ease-in hover:text-[#25D366]"
+            title="WhatsApp us"
+          >
+            <FaWhatsapp className="w-5 h-5" />
+          </motion.a>
+          <motion.a 
+            href="https://www.instagram.com/buyget_ict_solutions/profilecard/?igsh=MTA2bG94bjZzNHExMA==" 
+            whileHover={{ scale: 1.1 }} 
+            className="text-gray-900 transition-all duration-300 ease-in hover:text-[#E1306C]"
+            title="Instagram"
+          >
+            <Instagram className="w-5 h-5" />
+          </motion.a>
+          <motion.a 
+            href="https://www.linkedin.com/in/buyget-ict-solutions-36340435a" 
+            whileHover={{ scale: 1.1 }} 
+            className="text-gray-900 transition-all duration-300 ease-in hover:text-[#0077B5]"
+            title="LinkedIn"
+          >
+            <Linkedin className="w-5 h-5" />
+          </motion.a>
+        </div>
+
+        {/* Mobile Toggle */}
+        <motion.button
+          className="md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          whileHover={{ scale: 1.1 }}
+          aria-label="Toggle navigation menu"
+        >
+          {isMenuOpen ? (
+            <X size={24} className="text-gray-900" />
+          ) : (
+            <Menu size={24} className="text-gray-900" />
+          )}
+        </motion.button>
       </div>
 
       {/* Mobile Menu */}
@@ -204,7 +179,7 @@ export function Navbar() {
 
               <motion.div
                 variants={linkVariants}
-                className="flex flex-col space-y-6 w-full items-center"
+                className="flex flex-col space-y-6 w-full items-center mb-8"
               >
                 {links.map((link) => (
                   <motion.a
@@ -222,6 +197,50 @@ export function Navbar() {
                   </motion.a>
                 ))}
               </motion.div>
+
+              {/* Mobile Social Icons */}
+              <div className="flex items-center space-x-6 mt-auto">
+                <motion.a 
+                  href="/contact" 
+                  whileHover={{ scale: 1.1 }} 
+                  className="text-gray-900 transition-all duration-300 ease-in hover:text-[#34A853]"
+                  title="Call us"
+                >
+                  <Phone className="w-6 h-6" />
+                </motion.a>
+                <motion.a 
+                  href="mailto:info@example.com" 
+                  whileHover={{ scale: 1.1 }} 
+                  className="text-gray-900 transition-all duration-300 ease-in hover:text-[#D93025]"
+                  title="Email us"
+                >
+                  <Mail className="w-6 h-6" />
+                </motion.a>
+                <motion.a 
+                  href="https://wa.me/message/73UEIPABQIORO1" 
+                  whileHover={{ scale: 1.1 }} 
+                  className="text-gray-900 transition-all duration-300 ease-in hover:text-[#25D366]"
+                  title="WhatsApp us"
+                >
+                  <FaWhatsapp className="w-6 h-6" />
+                </motion.a>
+                <motion.a 
+                  href="https://www.instagram.com/buyget_ict_solutions/profilecard/?igsh=MTA2bG94bjZzNHExMA==" 
+                  whileHover={{ scale: 1.1 }} 
+                  className="text-gray-900 transition-all duration-300 ease-in hover:text-[#E1306C]"
+                  title="Instagram"
+                >
+                  <Instagram className="w-6 h-6" />
+                </motion.a>
+                <motion.a 
+                  href="https://www.linkedin.com/in/buyget-ict-solutions-36340435a" 
+                  whileHover={{ scale: 1.1 }} 
+                  className="text-gray-900 transition-all duration-300 ease-in hover:text-[#0077B5]"
+                  title="LinkedIn"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         )}
