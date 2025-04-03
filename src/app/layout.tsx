@@ -16,8 +16,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuyGet ICT Solutions | Web Development & Cybersecurity.",
+  title: "BuyGet",
   description: "BuyGet ICT Solutions provides custom web development, cybersecurity, and digital transformation services for businesses in Africa. Contact us for cutting-edge tech solutions",
+  twitter:{
+    card: "summary_large_image",
+    title: "BuyGet ICT Solutions",
+    description: "BuyGet ICT Solutions provides custom web development, cybersecurity, and digital transformation services for businesses in Africa. Contact us for cutting-edge tech solutions",
+  }
+    
 };
 
 export default function RootLayout({
