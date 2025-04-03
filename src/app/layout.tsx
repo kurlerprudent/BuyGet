@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuyGet",
-  description: "BuyGet ICT Solutions provides custom web development, cybersecurity, and digital transformation services for businesses in Africa. Contact us for cutting-edge tech solutions",
+  title: "BuyGet ICT Solutions",
+  description: "BuyGet ICT Solutions specializes in software development, AI and robotics, cybersecurity,aerospace engineering, industrial automation,consumer electronics, and renewable energysolutions. With a strong foundation in cutting-edge technology and innivation. Buyget ICT Solutions is positioned to revolutionize multiple industries while ensuring security, eficiency, and growth in digital education and beyond.",
   twitter:{
     card: "summary_large_image",
     title: "BuyGet ICT Solutions",

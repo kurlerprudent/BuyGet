@@ -72,12 +72,12 @@ export function HeroSection() {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">
           <div className="mb-8 md:mb-12 space-y-4 md:space-y-6">
-            {/* Changed text color to orange-500 and cursor color */}
+            {/* Adjusted font sizes for mobile */}
             <motion.div
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-normal tracking-wide text-orange-500 w-full px-4 break-words whitespace-pre-wrap"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-normal tracking-wide text-orange-500 w-full px-4 break-words whitespace-pre-wrap"
             >
               <div className="max-w-4xl mx-auto">
                 {currentText
@@ -101,14 +101,17 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            <motion.p
-              className="text-base sm:text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-white"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-            >
-              Driving digital transformation through innovative solutions and strategic partnerships
-            </motion.p>
+            <div className="relative inline-block"> {/* Adjusted wrapper */}
+          <motion.p
+            className="text-base sm:text-lg md:text-xl font-bold max-w-xl mx-auto px-4 leading-relaxed text-white relative z-10" // Changed text color
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
+            Driving digital transformation through innovative solutions and strategic partnerships
+          </motion.p>
+          <div className="absolute inset-y-0 inset-x-[-0.5rem] bg-black/20 rounded-lg backdrop-blur-sm"></div> {/* Adjusted overlay */}
+        </div>
           </div>
 
           <motion.div
@@ -120,8 +123,8 @@ export function HeroSection() {
             <motion.a
               href="/projects"
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
-                                rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
-                                text-base md:text-lg font-semibold group text-white"
+                                          rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
+                                          text-base md:text-lg font-semibold group text-white"
               whileHover={{
                 scale: 1.03,
                 boxShadow: '0 4px 24px rgba(255,255,255,0.1)',
@@ -129,14 +132,14 @@ export function HeroSection() {
             >
               Explore Innovations
               <ChevronDown className="ml-2 h-4 w-4 md:h-5 md:w-5 animate-bounce group-hover:translate-y-0.5 
-                                                                  transition-transform text-white" />
+                                                                                                transition-transform text-white" />
             </motion.a>
 
             <motion.a
               href="/form"
               className="px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-xl transition-all 
-                                text-base md:text-lg font-semibold text-center
-                                border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
+                                          text-base md:text-lg font-semibold text-center
+                                          border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
               whileHover={{ scale: 1.03 }}
             >
               Join Buyget Network
