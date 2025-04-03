@@ -72,11 +72,12 @@ export function HeroSection() {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">
           <div className="mb-8 md:mb-12 space-y-4 md:space-y-6">
+            {/* Changed text color to orange-500 and cursor color */}
             <motion.div
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-normal tracking-wide text-white w-full px-4 break-words whitespace-pre-wrap"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-normal tracking-wide text-orange-500 w-full px-4 break-words whitespace-pre-wrap"
             >
               <div className="max-w-4xl mx-auto">
                 {currentText
@@ -96,12 +97,12 @@ export function HeroSection() {
                     </span>
                   ))
                 }
-                <span className="ml-1 w-[3px] h-[1em] inline-block animate-pulse bg-white" />
+                <span className="ml-1 w-[3px] h-[1em] inline-block animate-pulse bg-orange-500" />
               </div>
             </motion.div>
 
             <motion.p
-              className="text-base sm:text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-gray-300"
+              className="text-base sm:text-lg md:text-xl font-medium max-w-xl mx-auto px-4 leading-relaxed text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}

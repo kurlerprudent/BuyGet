@@ -162,7 +162,7 @@ export function Navbar() {
 <AnimatePresence>
   {isMenuOpen && (
     <motion.div
-      className="md:hidden fixed inset-0 bg-gradient-to-br from-pink-500/95 via-pink-60/80 to-orange-100/95 backdrop-blur-lg"
+      className="md:hidden fixed inset-0 bg-gradient-to-br from-pink-500/95 via-pink-40/80 to-orange-300/95 backdrop-blur-lg"
       initial="closed"
       animate="open"
       exit="closed"
