@@ -23,21 +23,22 @@ description: `Founder and Pioneer of Buyget ICT Solutions, passionate about Afri
 ];
 
 const board = [
+
   {
     id: 1,
-    name: "MR. DANIEL NELSON DEI",
-    title: "Financial Lead & Audit",
-    description:
-      "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
-    image: "/assets/avatar.png",
-  },
-  {
-    id: 2,
     name: "LT COL INCOOM",
     title: "Board Lead & Operations",
     description:
       "A seasoned military leader with over 17 years of experience in leadership, logistics, and project management. He holds an MBA from Accra Business School and an MSc in Defence and International Politics from the Ghana Armed Forces Command and Staff College. Has served in key roles, including Deputy Director for Special Operations, Assistant Director for Land Operations, and Services Engineer at the 37 Military Hospital. With extensive experience in UN Peace Support Operations and mentoring over 20 junior leaders, he excels in strategic planning and operational execution. He currently serves as Deputy Logistics Officer in the Ghana Armed Forces.",
     image: "/assets/hon.jpeg",
+  },
+  {
+    id: 2,
+    name: "MR. DANIEL NELSON DEI",
+    title: "Financial Lead & Audit",
+    description:
+      "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
+    image: "/assets/dei.jpeg",
   },
   {
     id: 3,
