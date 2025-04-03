@@ -84,7 +84,6 @@ const teams = [
   },
 ];
 
-// FlipCard Component for Leadership Cards
 function FlipCard({
   image,
   name,
@@ -114,26 +113,29 @@ function FlipCard({
         >
           <div className="relative w-full h-full">
             <Image src={image} alt={name} fill className="object-cover" />
-            {/* Angled Overlay for Name & Title */} 
+            {/* Updated Name & Title Container */}
             <div
-              className="absolute top-0 left-0 bg-black/50 text-white p-2"
-              style={{ width: "200px", height: "80px", clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)" }}
-              title={`${name} - ${title}`}
+              className="absolute top-1 left-0 bg-black/60 text-white p-3 rounded-tr-xl rounded-bl-xl"
+              style={{ 
+                width: "100px",
+                height: "90px",
+                clipPath: "polygon(0 0, 100% 0, 90% 100%, 0% 100%)"
+              }}
             >
-              <h4 className="text-sm font-bold">{name}</h4>
-              <p className="text-xs">{title}</p>
+              <h4 className="text-xs font-bold leading-tight mb-1">{name}</h4>
+              <p className="text-[0.65rem] leading-tight opacity-90">{title}</p>
             </div>
-            {/* Click to flip at bottom */} 
+            {/* Click to flip button */}
             <button
               onClick={() => setIsFlipped(true)}
-              className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1 rounded-md"
+              className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-md hover:bg-black/70 transition-all"
             >
               Click to view profile
             </button>
           </div>
         </div>
 
-        {/* Back Side */}
+        {/* Back Side (keep same as before) */}
         <div
           className="absolute w-full h-full backface-hidden rounded-xl shadow-lg border border-gray-300 bg-white/50 backdrop-blur-md p-6 flex flex-col items-center justify-center"
           style={{
