@@ -26,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative pt-12 pb-6 bg-blue-600 border-t border-blue-700 text-white">
+    <footer className="relative pt-12 pb-6 bg-black/75 border-t border-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="space-y-4">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-700 pt-6 text-center">
+        <div className="border-t border-gray-800 pt-6 text-center">
           <span className="text-white">
             © {new Date().getFullYear()} BuyGet™. All rights reserved.
           </span>

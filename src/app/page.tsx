@@ -15,8 +15,8 @@ const Page = () => {
       <StatsPanel />
       <ProjectsPreview />
       <ClientMarquee />
-      <WalkingCarousel/>
-      <TestimonialsSection />
+     
+     
       
     </div>
   );

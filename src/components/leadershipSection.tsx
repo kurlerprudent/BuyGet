@@ -10,15 +10,15 @@ const executives = [
     name: "Mr. Joshua Elson",
     title: "Founder and Executive Director",
     description:
-      "Provides overall leadership, strategic vision, and corporate governance.",
+      "Founder and Visionary of Buyget ICT Solutions, passionate about Africa’s technological advancement and development. He holds a BSc in Information Technology from the University of Ghana, currently pursuing his Master’s degree in Cybersecurity and Forensics. He is a certified Pro Backend Developer from ALX, he also runs multiple agribusiness firms. Previously, he served as a Public Relations Officer with the Ghana Armed Forces Northern Command during his national service.",
     image: "/assets/josh.jpeg",
   },
   {
     id: 2,
     name: "Mr. Christian",
-    title: "Chief Technology Officer (CTO)",
+    title: "Co-founder and Managing Director",
     description:
-      "Leads technological innovations, AI development, and cybersecurity frameworks.",
+      "Co-founder and Managing Director of Buyget ICT Solutions. A software engineer with over 5 years of experience in technology and business leadership. Holds a BSc in Computer Science from the University of Ghana and is currently pursuing his MSc in Software Engineering. He is a skilled full-stack developer with expertise. Previously, he worked as Lead Software Engineer at PMC where he led development teams and implemented enterprise solutions. Additionally, he co-founded QuiverTech Solutions.",
     image: "/assets/christiain.jpeg",
   },
 ];
@@ -27,34 +27,36 @@ const board = [
   {
     id: 1,
     name: "Mr Dei",
-    title: "education UK",
-    description: "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
+    title: "Financial Lead & Audit",
+    description:
+      "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
     image: "/assets/avatar.png",
   },
   {
     id: 2,
     name: "Lt col incoom",
-    title: "Clo of Northern command",
-    description: "And operations",
+    title: "Board Lead & Operations",
+    description:
+      "A seasoned military leader with over 17 years of experience in leadership, logistics, and project management. He holds an MBA from Accra Business School and an MSc in Defence and International Politics from the Ghana Armed Forces Command and Staff College. Has served in key roles, including Deputy Director for Special Operations, Assistant Director for Land Operations, and Services Engineer at the 37 Military Hospital. With extensive experience in UN Peace Support Operations and mentoring over 20 junior leaders, he excels in strategic planning and operational execution. He currently serves as Deputy Logistics Officer in the Ghana Armed Forces.",
     image: "/assets/hon.jpeg",
   },
   {
     id: 3,
     name: "Lt lawyer lawyer he",
-    title: "lawyer and legal officer",
+    title: "Legal Lead & Secretary",
     description: "Provides legal advice and representation",
     image: "/assets/secetery.jpeg",
   },
   {
     id: 4,
-    name: "Mr.Honu Christian",
-    title: "non Executive Director",
-    description: "Councillor",
+    name: "Mr. Honu Christian",
+    title: "Non-Executive Director",
+    description:
+      "Experienced counsellor and visionary leader dedicated to fostering growth and development. He developed his leadership expertise through senior roles at Volta Aluminium Company Ghana and Spiro Ghana Limited. By combining his counselling knowledge with strategic leadership, he enables individuals and organizations to reach their full potential.",
     image: "/assets/honu.jpeg",
   },
 ];
 
-// Updated Teams Array
 const teams = [
   {
     id: 1,
@@ -112,12 +114,16 @@ function FlipCard({
         >
           <div className="relative w-full h-full">
             <Image src={image} alt={name} fill className="object-cover" />
-            {/* Name & Title at top-left */}
-            <div className="absolute top-2 left-2 bg-black/50 text-white p-2 rounded-md">
+            {/* Angled Overlay for Name & Title */} 
+            <div
+              className="absolute top-0 left-0 bg-black/50 text-white p-2"
+              style={{ width: "200px", height: "80px", clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)" }}
+              title={`${name} - ${title}`}
+            >
               <h4 className="text-sm font-bold">{name}</h4>
               <p className="text-xs">{title}</p>
             </div>
-            {/* Click to flip at bottom */}
+            {/* Click to flip at bottom */} 
             <button
               onClick={() => setIsFlipped(true)}
               className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1 rounded-md"
@@ -164,7 +170,7 @@ function TeamCard({ team }: { team: { id: number; name: string; description: str
         onClick={() => setShowEmail(!showEmail)}
         className="mt-4 bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-md"
       >
-         view email
+         Click to view email
       </button>
       {showEmail && (
         <div className="mt-2 text-sm text-gray-800">{team.email}</div>
