@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ import Image from 'next/image';
 const projectsPreview = [
   {
     title: "SHSWEB",
-    description: "Develops technological solutions for  schools.",
+    description: "Develops technological solutions for schools.",
     category: "Technology and Software Solutions",
     bgImage:  "/assets/shsweb.jpeg",
   },
@@ -29,32 +29,15 @@ const projectsPreview = [
     category: "Technology and Software Solutions",
     bgImage: "/assets/ctech.jpg",
   },
- 
- 
 ];
 
 const ProjectsPreview = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const displayedProjects = projectsPreview.slice(0, 4);
 
-  // Dark mode detection
-  useEffect(() => {
-    const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-    
-    checkDarkMode();
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className={`py-24 ${isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-gray-100'}`}>
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className={`text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
           Our Inventions
         </h2>
         <motion.div
@@ -70,7 +53,7 @@ const ProjectsPreview = () => {
           {displayedProjects.map((project, index) => (
             <Link href="/projects" key={index} passHref>
               <motion.div
-                className={`relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer`}
+                className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
@@ -85,16 +68,15 @@ const ProjectsPreview = () => {
                     style={{ objectFit: "cover" }}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className={`absolute inset-0 ${isDarkMode ? "bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent" : "bg-gradient-to-t from-gray-800 via-gray-800/60 to-transparent"}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-gray-800/60 to-transparent" />
                 </div>
-                <div className={`p-6 ${isDarkMode ? "bg-gray-800" : "bg-gray-100"} ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                  <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? "text-white" : "text-black"}`}>
+                <div className="p-6 bg-gray-100 text-gray-900">
+                  <h3 className="text-2xl font-bold mb-2 text-black">
                     {project.title}
                   </h3>
-                  <p className={`mb-4 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                  <p className="mb-4 text-gray-700">
                     {project.description}
                   </p>
-                  
                 </div>
               </motion.div>
             </Link>
@@ -102,7 +84,7 @@ const ProjectsPreview = () => {
         </motion.div>
         <div className="mt-12 flex justify-center">
           <Link href="/projects" passHref>
-            <p className={`px-8 py-3 font-semibold rounded-full shadow-xl transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white`}>
+            <p className="px-8 py-3 font-semibold rounded-full shadow-xl transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white">
               View All Inventions
             </p>
           </Link>

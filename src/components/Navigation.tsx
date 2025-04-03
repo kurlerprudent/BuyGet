@@ -1,17 +1,15 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap, Sun, Moon, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Menu, X, Phone, Mail, MessageCircle, Linkedin, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 export function Navbar() {
   const pathname = usePathname();
   
-  // Hide navbar if path contains 'form'
   if (pathname?.includes('form')) {
     return null;
   }
@@ -19,18 +17,14 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // Default to dark mode
   const { scrollY } = useScroll();
 
   const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
     { name: 'Inventions', href: '/projects' },
-    { name: 'News & Events ', href: '/news-events' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: 'About Us', href: '/about' },
+    { name: 'News & Events', href: '/news-events' },
   ];
 
-  // Scroll handling
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     if (latest > previous && latest > 100) {
@@ -41,23 +35,6 @@ export function Navbar() {
     setIsScrolled(latest > 50);
   });
 
-  // Dark mode handling
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    // Default to dark mode if no theme stored
-    const initialDarkMode = storedTheme ? storedTheme === 'dark' : true;
-    setDarkMode(initialDarkMode);
-    document.documentElement.classList.toggle('dark', initialDarkMode);
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    document.documentElement.classList.toggle('dark', newDarkMode);
-    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
-  };
-
-  // Mobile menu handling
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsMenuOpen(false);
@@ -71,7 +48,6 @@ export function Navbar() {
     };
   }, [isMenuOpen]);
 
-  // Animation variants
   const mobileMenuVariants = {
     open: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
     closed: { x: '-100%', transition: { duration: 0.3 } },
@@ -97,38 +73,38 @@ export function Navbar() {
       animate={{ y: isHidden ? -100 : 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
-      <div className="bg-background/80 backdrop-blur-md border-b border-border/10">
+      <div className={`backdrop-blur-md border-b ${
+        isScrolled 
+          ? 'bg-white/80 border-gray-200' 
+          : 'bg-transparent border-transparent'
+      }`}>
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" passHref>
-        <motion.div
-          className="flex items-center gap-2 group"
-          whileHover={{ scale: 1.05, rotate: -2 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-        >
-          <motion.div whileHover={{ rotate: 15 }}>
-            <Image
-              src='/assets/lg6.png'
-              alt='BuyGet Logo'
-              width={48}
-              height={48}
-              className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            />
-          </motion.div>
-          
-          <span className="text-2xl font-bold tracking-tight relative">
-            <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
-              BuyGet
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10">
-              BuyGet
-            </span>
-          </span>
-        </motion.div>   
-      </Link>
+          <Link href="/" passHref>
+            <motion.div
+              className="flex items-center gap-2 group"
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+            >
+              <motion.div whileHover={{ rotate: 15 }}>
+                <Image
+                  src='/assets/lg6.png'
+                  alt='BuyGet Logo'
+                  width={48}
+                  height={48}
+                  className="rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                />
+              </motion.div>
+              <span className="text-2xl font-bold tracking-tight relative">
+                <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent group-hover:bg-gradient-to-br transition-all duration-500">
+                  BuyGet
+                </span>
+              </span>
+            </motion.div>   
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 flex-grow justify-center">
             {links.map((link) => (
               <motion.a
                 key={link.name}
@@ -137,34 +113,51 @@ export function Navbar() {
                 whileHover={{ y: -2 }}
                 animate={pathname === link.href ? activeLinkAnimation : {}}
               >
-               <span className={`text-xl font-bold font-medium ${pathname === link.href ? 'text-pink-500' : darkMode ? 'text-white' : 'text-yellow-500'}`}>
+                <span className={`text-xl font-medium ${
+                  pathname === link.href 
+                    ? 'text-pink-500' 
+                    : isScrolled 
+                      ? 'text-gray-900' 
+                      : 'text-white'
+                }`}>
                   {link.name}
                 </span>
                 <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
-            <motion.button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-accent transition-colors"
-              whileHover={{ scale: 1.1 }}
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-800" />
-              )}
-            </motion.button>
+          </div>
+
+          {/* Right Icons */}
+          <div className="hidden md:flex items-center space-x-6">
+            <motion.a href="tel:+1234567890" whileHover={{ scale: 1.1 }}>
+              <Phone className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            </motion.a>
+            <motion.a href="mailto:info@example.com" whileHover={{ scale: 1.1 }}>
+              <Mail className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            </motion.a>
+            <motion.a href="https://wa.me/1234567890" whileHover={{ scale: 1.1 }}>
+              <MessageCircle className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            </motion.a>
+            <motion.a href="https://instagram.com" whileHover={{ scale: 1.1 }}>
+              <Instagram className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            </motion.a>
+            <motion.a href="https://linkedin.com" whileHover={{ scale: 1.1 }}>
+              <Linkedin className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            </motion.a>
           </div>
 
           {/* Mobile Toggle */}
           <motion.button
-            className="md:hidden text-white"
+            className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             aria-label="Toggle navigation menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? (
+              <X size={24} className={isScrolled ? 'text-gray-900' : 'text-white'} />
+            ) : (
+              <Menu size={24} className={isScrolled ? 'text-gray-900' : 'text-white'} />
+            )}
           </motion.button>
         </div>
       </div>
@@ -173,7 +166,7 @@ export function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="md:hidden fixed inset-0 bg-white/80 backdrop-blur-sm"
             initial="closed"
             animate="open"
             exit="closed"
@@ -181,10 +174,9 @@ export function Navbar() {
             onClick={handleBackdropClick}
           >
             <div className="relative container mx-auto px-4 py-8 h-full flex flex-col items-center">
-              {/* Close Button Added Here */}
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="absolute top-4 right-4 text-white hover:text-pink-500 transition-colors"
+                className="absolute top-4 right-4 text-gray-900 hover:text-pink-500 transition-colors"
                 aria-label="Close menu"
               >
                 <X size={24} />
@@ -203,30 +195,17 @@ export function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                     whileHover={{ x: 10 }}
                   >
-                    <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-500' : 'text-white'}`}>
+                    <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-500' : 'text-gray-900'}`}>
                       {link.name}
                     </span>
                     <span className="absolute left-0 bottom-0 h-1 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
                   </motion.a>
                 ))}
               </motion.div>
-              {/* Toggle button in mobile menu */}
-              <motion.button
-                onClick={toggleDarkMode}
-                className="mt-8 p-2 rounded-full hover:bg-accent transition-colors"
-                whileHover={{ scale: 1.1 }}
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-white" />
-                )}
-              </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      </motion.nav>
-    );
-  }
+    </motion.nav>
+  );
+}
