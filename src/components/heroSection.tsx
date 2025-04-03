@@ -50,15 +50,15 @@ export function HeroSection() {
 
   // Always use dark mode settings
   const bgImage = '/assets/lg2.jpeg';
-  // Lighter overlay by reducing the alpha value
-  const bgOverlay = `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4))`; 
+  // Removed the overlay
+  const bgOverlay = `url(${bgImage})`;
 
   return (
     <section className="relative h-screen">
       <motion.div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `${bgOverlay}, url(${bgImage})`,
+          backgroundImage: `${bgOverlay}`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y: yPos,

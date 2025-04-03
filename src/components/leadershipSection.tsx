@@ -7,14 +7,14 @@ import Image from "next/image";
 const executives = [
   {
     id: 1,
-    name: "Mr. Joshua Elson",
+    name: "JOSHUA ELSON",
     title: "Founder and Executive Director",
-description: `Founder and Visionary of Buyget ICT Solutions, passionate about Africa’s technological advancement and development. He holds a BSc in Information Technology from the University of Ghana, currently pursuing his Master’s degree in Cybersecurity and Forensics. He is a certified Pro Backend Developer from ALX, he also runs multiple agribusiness firms. Previously, he served as a Public Relations Officer with the Ghana Armed Forces Northern Command during his national service.`,
-    image: "/assets/josh.jpeg",
+description: `Founder and Pioneer of Buyget ICT Solutions, passionate about Africa’s technological advancement and development. He holds a BSc in Information Technology from the University of Ghana, currently pursuing his Master’s degree in Cybersecurity and Forensics. He is a certified Pro Backend Developer from ALX, he also runs multiple agribusiness firms. Previously, he served as a Public Relations Officer with the Ghana Armed Forces Northern Command during his national service.`,
+    image: "/assets/joshua.jpeg",
   },
   {
     id: 2,
-    name: "Mr. Christian",
+    name: "CHRISTIAN ABROKWA",
     title: "Co-founder and Managing Director",
     description:
       "Co-founder and Managing Director of Buyget ICT Solutions. A software engineer with over 5 years of experience in technology and business leadership. Holds a BSc in Computer Science from the University of Ghana and is currently pursuing his MSc in Software Engineering. He is a skilled full-stack developer with expertise. Previously, he worked as Lead Software Engineer at PMC where he led development teams and implemented enterprise solutions. Additionally, he co-founded QuiverTech Solutions.",
@@ -25,7 +25,7 @@ description: `Founder and Visionary of Buyget ICT Solutions, passionate about Af
 const board = [
   {
     id: 1,
-    name: "Mr Dei",
+    name: "MR. DANIEL NELSON DEI",
     title: "Financial Lead & Audit",
     description:
       "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
@@ -33,7 +33,7 @@ const board = [
   },
   {
     id: 2,
-    name: "Lt col incoom",
+    name: "LT COL INCOOM",
     title: "Board Lead & Operations",
     description:
       "A seasoned military leader with over 17 years of experience in leadership, logistics, and project management. He holds an MBA from Accra Business School and an MSc in Defence and International Politics from the Ghana Armed Forces Command and Staff College. Has served in key roles, including Deputy Director for Special Operations, Assistant Director for Land Operations, and Services Engineer at the 37 Military Hospital. With extensive experience in UN Peace Support Operations and mentoring over 20 junior leaders, he excels in strategic planning and operational execution. He currently serves as Deputy Logistics Officer in the Ghana Armed Forces.",
@@ -48,11 +48,11 @@ const board = [
   },
   {
     id: 4,
-    name: "Mr. Honu Christian",
+    name: "Mr. HONU CHRISTIAIN",
     title: "Non-Executive Director",
     description:
       "A seasoned counsellor and transformative leader, leveraging his expertise to drive positive change.  He honed his leadership skills through notable roles as Assistant Manager at Volta Aluminium Company Ghana and Spiro Ghana Limited. His unique blend of counselling expertise and leadership acumen empowers individuals and organizations to thrive.",
-    image: "/assets/honu.jpeg",
+    image: "/assets/daddy.jpeg",
   },
 ];
 
@@ -143,7 +143,7 @@ function FlipCard({
             transform: "rotateY(180deg)",
           }}
         >
-          <h4 className="text-lg font-semibold text-black mb-2">{name}</h4>
+          
           <p className="text-sm text-gray-600 mb-3">{title}</p>
           {description && (
             <p className="text-sm text-gray-600 mb-4">{description}</p>
