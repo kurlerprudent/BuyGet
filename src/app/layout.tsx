@@ -33,6 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" > 
+    <head>
+    <meta name="google-site-verification" content="alxkRaJUq9r0EnN8LF9ku9_mQEdUad6MTHpWIHnJqtM" />
+    </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar/>
         {children}
