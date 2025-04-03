@@ -58,13 +58,7 @@ const NewsEventsPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <header className="border-b border-gray-200">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600">
-            BuyGet Updates
-          </h1>
-        </div>
-      </header>
+      
 
       {/* Featured Section */}
       <section className="relative h-96 border-b border-gray-200">
