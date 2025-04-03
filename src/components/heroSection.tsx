@@ -49,7 +49,7 @@ export function HeroSection() {
   };
 
   // Always use dark mode settings
-  const bgImage = '/assets/lg5.jpeg';
+  const bgImage = '/assets/lg2.jpeg';
   const bgOverlay = `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6))`;
 
   return (

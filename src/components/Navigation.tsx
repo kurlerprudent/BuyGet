@@ -1,7 +1,7 @@
 "use client";
-
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, Mail, MessageCircle, Linkedin, Instagram } from 'lucide-react';
+import { Menu, X, Phone, Mail,  Linkedin, Instagram } from 'lucide-react';
+import { FaWhatsapp } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -74,9 +74,9 @@ export function Navbar() {
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
       <div className={`backdrop-blur-md border-b ${
-        isScrolled 
-          ? 'bg-white/80 border-gray-200' 
-          : 'bg-transparent border-transparent'
+          isScrolled 
+            ? 'bg-white/80 border-gray-200' 
+            : 'bg-transparent border-transparent'
       }`}>
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" passHref>
@@ -113,13 +113,7 @@ export function Navbar() {
                 whileHover={{ y: -2 }}
                 animate={pathname === link.href ? activeLinkAnimation : {}}
               >
-                <span className={`text-xl font-medium ${
-                  pathname === link.href 
-                    ? 'text-pink-500' 
-                    : isScrolled 
-                      ? 'text-gray-900' 
-                      : 'text-white'
-                }`}>
+                <span className={`text-xl font-medium ${pathname === link.href ? 'text-pink-500' : 'text-gray-900'}`}>
                   {link.name}
                 </span>
                 <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 group-hover:w-full transition-all duration-300" />
@@ -128,23 +122,49 @@ export function Navbar() {
           </div>
 
           {/* Right Icons */}
-          <div className="hidden md:flex items-center space-x-6">
-            <motion.a href="tel:+1234567890" whileHover={{ scale: 1.1 }}>
-              <Phone className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-            </motion.a>
-            <motion.a href="mailto:info@example.com" whileHover={{ scale: 1.1 }}>
-              <Mail className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-            </motion.a>
-            <motion.a href="https://wa.me/1234567890" whileHover={{ scale: 1.1 }}>
-              <MessageCircle className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-            </motion.a>
-            <motion.a href="https://instagram.com" whileHover={{ scale: 1.1 }}>
-              <Instagram className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-            </motion.a>
-            <motion.a href="https://linkedin.com" whileHover={{ scale: 1.1 }}>
-              <Linkedin className={`w-5 h-5 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-            </motion.a>
-          </div>
+<div className="hidden md:flex items-center space-x-6">
+  <motion.a 
+    href="/contact" 
+    whileHover={{ scale: 1.1 }} 
+    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#34A853]"
+    title="Call us"
+  >
+    <Phone className="w-5 h-5" />
+  </motion.a>
+  <motion.a 
+    href="mailto:info@example.com" 
+    whileHover={{ scale: 1.1 }} 
+    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#D93025]"
+    title="Email us"
+  >
+    <Mail className="w-5 h-5" />
+  </motion.a>
+  <motion.a 
+    href="https://wa.me/message/73UEIPABQIORO1" 
+    whileHover={{ scale: 1.1 }} 
+    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#25D366]"
+    title="WhatsApp us"
+  >
+    <FaWhatsapp className="w-5 h-5" />
+  </motion.a>
+  <motion.a 
+    href="https://www.instagram.com/buyget_ict_solutions/profilecard/?igsh=MTA2bG94bjZzNHExMA==" 
+    whileHover={{ scale: 1.1 }} 
+    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#E1306C]"
+    title="Instagram"
+  >
+    <Instagram className="w-5 h-5" />
+  </motion.a>
+  <motion.a 
+    href="https://www.linkedin.com/in/buyget-ict-solutions-36340435a" 
+    whileHover={{ scale: 1.1 }} 
+    className="text-gray-900 transition-all duration-300 ease-in hover:text-[#0077B5]"
+    title="LinkedIn"
+  >
+    <Linkedin className="w-5 h-5" />
+  </motion.a>
+</div>
+
 
           {/* Mobile Toggle */}
           <motion.button
@@ -154,9 +174,9 @@ export function Navbar() {
             aria-label="Toggle navigation menu"
           >
             {isMenuOpen ? (
-              <X size={24} className={isScrolled ? 'text-gray-900' : 'text-white'} />
+              <X size={24} className="text-gray-900" />
             ) : (
-              <Menu size={24} className={isScrolled ? 'text-gray-900' : 'text-white'} />
+              <Menu size={24} className="text-gray-900" />
             )}
           </motion.button>
         </div>
@@ -194,7 +214,7 @@ export function Navbar() {
                     variants={linkVariants}
                     onClick={() => setIsMenuOpen(false)}
                     whileHover={{ x: 10 }}
-                  >
+                  > 
                     <span className={`text-2xl font-semibold ${pathname === link.href ? 'text-pink-500' : 'text-gray-900'}`}>
                       {link.name}
                     </span>

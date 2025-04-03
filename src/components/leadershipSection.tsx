@@ -1,16 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { title } from "process";
 
+// Sample Data
 const executives = [
   {
     id: 1,
     name: "Mr. Joshua Elson",
     title: "Founder and Executive Director",
     description:
-      "Provides overall leadership, strategic vision, and corporate governance. ",
+      "Provides overall leadership, strategic vision, and corporate governance.",
     image: "/assets/josh.jpeg",
   },
   {
@@ -20,7 +20,7 @@ const executives = [
     description:
       "Leads technological innovations, AI development, and cybersecurity frameworks.",
     image: "/assets/christiain.jpeg",
-  }
+  },
 ];
 
 const board = [
@@ -28,91 +28,161 @@ const board = [
     id: 1,
     name: "Mr Dei",
     title: "education UK",
-    description:
-      "work audit and finance",
+    description: "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
     image: "/assets/avatar.png",
   },
   {
     id: 2,
     name: "Lt col incoom",
-    title: " Clo of Northern command",
-    description:
-      "And operations",
-    image: "/assets/avatar.png",
-  },
-  {
-    id:3,
-    name: "Lt lawyer lawyer he",
-    title:"lawyer and legal officer",
-    image:"/assets/secetery.jpeg"
-
-  },
-  {
-    id:4,
-    name:"Mr.Honu Christian",
-    title:" non Executive Director",
-    description:'Councillor',
-    image:"/assets/hon.jpeg"
-
-  }
-];
-
-const teams = [
-  {
-    id: 1,
-    name: "Development & Engineering Team",
-    description:
-      "Supports technological innovations and product development across divisions.",
-  },
-  {
-    id: 2,
-    name: "Business Development, Finance & Legal Team",
-    description:
-      "Handles business development, financial planning, and legal compliance.",
+    title: "Clo of Northern command",
+    description: "And operations",
+    image: "/assets/hon.jpeg",
   },
   {
     id: 3,
-    name: "Customer Support & Training Team",
-    description:
-      "Provides customer support, training, and ensures high satisfaction levels.",
+    name: "Lt lawyer lawyer he",
+    title: "lawyer and legal officer",
+    description: "Provides legal advice and representation",
+    image: "/assets/secetery.jpeg",
   },
   {
     id: 4,
-    name: "Corporate Governance & Strategic Vision",
-    description:
-      "Ensures transparency and aligns long-term strategic growth with corporate governance.",
+    name: "Mr.Honu Christian",
+    title: "non Executive Director",
+    description: "Councillor",
+    image: "/assets/honu.jpeg",
   },
 ];
 
-const LeadershipSection = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+// Updated Teams Array
+const teams = [
+  {
+    id: 1,
+    name: "Customer Support",
+    description: "Provides customer assistance and troubleshooting.",
+    email: "support@buyget.co",
+  },
+  {
+    id: 2,
+    name: "Media",
+    description: "Handles public relations, marketing, and communications.",
+    email: "media@buyget.co",
+  },
+  {
+    id: 3,
+    name: "Research",
+    description: "Conducts market and technology research to drive innovation.",
+    email: "research@buyget.co",
+  },
+  {
+    id: 4,
+    name: "Developers",
+    description: "Builds and maintains our cutting-edge technological solutions.",
+    email: "dev@buyget.co",
+  },
+];
 
-  useEffect(() => {
-    const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-
-    checkDarkMode();
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => observer.disconnect();
-  }, []);
+// FlipCard Component for Leadership Cards
+function FlipCard({
+  image,
+  name,
+  title,
+  description,
+}: {
+  image: string;
+  name: string;
+  title: string;
+  description?: string;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <section className={`relative py-20 ${
-      isDarkMode
-        ? 'bg-gradient-to-b from-gray-900 via-gray-950 to-black'
-        : 'bg-gradient-to-b from-slate-50 via-slate-100 to-slate-200'
-    }`}>
-      {/* Fixed dark background */}
-      <div className="fixed inset-0" style={{ zIndex: -1, background: isDarkMode ? 'black' : 'white' }} />
+    <div className="h-96 perspective-1000" style={{ perspective: "1000px" }}>
+      <div
+        className="relative w-full h-full transition-transform duration-500"
+        style={{
+          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {/* Front Side */}
+        <div
+          className="absolute w-full h-full backface-hidden rounded-xl shadow-lg border border-gray-300 bg-white/50 backdrop-blur-md overflow-hidden"
+          style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+        >
+          <div className="relative w-full h-full">
+            <Image src={image} alt={name} fill className="object-cover" />
+            {/* Name & Title at top-left */}
+            <div className="absolute top-2 left-2 bg-black/50 text-white p-2 rounded-md">
+              <h4 className="text-sm font-bold">{name}</h4>
+              <p className="text-xs">{title}</p>
+            </div>
+            {/* Click to flip at bottom */}
+            <button
+              onClick={() => setIsFlipped(true)}
+              className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1 rounded-md"
+            >
+              Click to view profile
+            </button>
+          </div>
+        </div>
+
+        {/* Back Side */}
+        <div
+          className="absolute w-full h-full backface-hidden rounded-xl shadow-lg border border-gray-300 bg-white/50 backdrop-blur-md p-6 flex flex-col items-center justify-center"
+          style={{
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <h4 className="text-lg font-semibold text-black mb-2">{name}</h4>
+          <p className="text-sm text-gray-600 mb-3">{title}</p>
+          {description && (
+            <p className="text-sm text-gray-600 mb-4">{description}</p>
+          )}
+          <button
+            onClick={() => setIsFlipped(false)}
+            className="mt-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md"
+          >
+            Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// TeamCard Component for Operational & Technical Teams
+function TeamCard({ team }: { team: { id: number; name: string; description: string; email: string } }) {
+  const [showEmail, setShowEmail] = useState(false);
+  return (
+    <div className="rounded-xl p-6 shadow-sm hover:shadow-lg transition-all border border-gray-300 bg-white/50 backdrop-blur-md">
+      <h4 className="text-xl font-bold text-black">{team.name}</h4>
+      <p className="text-gray-600">{team.description}</p>
+      <button
+        onClick={() => setShowEmail(!showEmail)}
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-md"
+      >
+         view email
+      </button>
+      {showEmail && (
+        <div className="mt-2 text-sm text-gray-800">{team.email}</div>
+      )}
+    </div>
+  );
+}
+
+export default function LeadershipSection() {
+  return (
+    <section className="relative py-20 bg-gradient-to-b from-slate-50 via-slate-100 to-slate-200">
+      {/* Fixed light background */}
+      <div className="fixed inset-0" style={{ zIndex: -1, background: "white" }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.h2
-          className={`text-4xl md:text-5xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} text-center mb-12`}
+          className="text-4xl md:text-5xl font-bold text-center mb-12 text-black"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -124,7 +194,7 @@ const LeadershipSection = () => {
         {/* Executive Caucus */}
         <div className="mb-16">
           <motion.h3
-            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
+            className="text-3xl font-semibold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -136,33 +206,26 @@ const LeadershipSection = () => {
             {executives.map((exec) => (
               <motion.div
                 key={exec.id}
-                className={`rounded-xl p-6 shadow-sm hover:shadow-lg border ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} backdrop-blur-md text-center transition-all`}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border border-white/30">
-                  <Image
-                    src={exec.image}
-                    alt={exec.name}
-                    width={96}
-                    height={96}
-                    className="object-cover"
-                  />
-                </div>
-                <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>{exec.name}</h4>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>{exec.title}</p>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{exec.description}</p>
+                <FlipCard
+                  image={exec.image}
+                  name={exec.name}
+                  title={exec.title}
+                  description={exec.description}
+                />
               </motion.div>
             ))}
           </div>
         </div>
 
-             {/* Board Section with Flip Cards */}
+        {/* Board Section */}
         <div className="mb-16">
           <motion.h3
-            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
+            className="text-3xl font-semibold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -174,69 +237,17 @@ const LeadershipSection = () => {
             {board.map((member) => (
               <motion.div
                 key={member.id}
-                className="h-64 perspective-1000"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="relative w-full h-full preserve-3d">
-                  <motion.div
-                    className="w-full h-full relative transition-transform duration-500"
-                    whileHover={{ rotateY: 180 }}
-                    style={{ transformStyle: 'preserve-3d' }}
-                  >
-                    {/* Front Side */}
-                    <div className={`absolute w-full h-full backface-hidden rounded-xl p-6 shadow-lg border ${
-                      isDarkMode 
-                        ? 'border-white/20 bg-gray-800/50' 
-                        : 'border-gray-300 bg-white/50'
-                    } backdrop-blur-md flex flex-col items-center justify-center`}
-                         style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}>
-                      <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-white/30">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          width={96}
-                          height={96}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                      <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} text-center`}>
-                        {member.name}
-                      </h4>
-                      <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-center`}>
-                        {member.title}
-                      </p>
-                    </div>
-
-                    {/* Back Side */}
-                    <div className={`absolute w-full h-full backface-hidden rounded-xl p-6 shadow-lg border ${
-                      isDarkMode 
-                        ? 'border-white/20 bg-gray-800/50' 
-                        : 'border-gray-300 bg-white/50'
-                    } backdrop-blur-md flex flex-col items-center justify-center`}
-                         style={{ 
-                           WebkitBackfaceVisibility: 'hidden',
-                           backfaceVisibility: 'hidden',
-                           transform: 'rotateY(180deg)',
-                         }}>
-                      <div className="text-center">
-                        <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-2`}>
-                          {member.name}
-                        </h4>
-                        <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-3`}>
-                          {member.title}
-                        </p>
-                        {member.description && (
-                          <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                            {member.description}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                <FlipCard
+                  image={member.image}
+                  name={member.name}
+                  title={member.title}
+                  description={member.description}
+                />
               </motion.div>
             ))}
           </div>
@@ -245,7 +256,7 @@ const LeadershipSection = () => {
         {/* Operational & Technical Teams */}
         <div className="mb-16">
           <motion.h3
-            className={`text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-6`}
+            className="text-3xl font-semibold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -257,23 +268,17 @@ const LeadershipSection = () => {
             {teams.map((team) => (
               <motion.div
                 key={team.id}
-                className={`rounded-xl p-6 shadow-sm hover:shadow-lg border ${isDarkMode ? 'border-white/20 bg-gray-800/50' : 'border-gray-300 bg-white/50'} transition-all backdrop-blur-md`}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h4 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>{team.name}</h4>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{team.description}</p>
+                <TeamCard team={team} />
               </motion.div>
             ))}
           </div>
         </div>
-
-       
       </div>
     </section>
   );
-};
-
-export default LeadershipSection; 
+}
