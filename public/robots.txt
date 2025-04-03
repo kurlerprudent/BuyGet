@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.buyget.co
+
+# Sitemaps
+Sitemap: https://www.buyget.co/sitemap.xml
