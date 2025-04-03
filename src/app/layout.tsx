@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuyGet ICT Solutions",
-  description: "Innovative solutions for modern businesses",
+  title: "BuyGet ICT Solutions | Web Development & Cybersecurity.",
+  description: "BuyGet ICT Solutions provides custom web development, cybersecurity, and digital transformation services for businesses in Africa. Contact us for cutting-edge tech solutions",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark"> {/* Add dark class here */}
+    <html lang="en" > 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar/>
         {children}
