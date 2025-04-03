@@ -32,20 +32,21 @@ const board = [
       "A seasoned military leader with over 17 years of experience in leadership, logistics, and project management. He holds an MBA from Accra Business School and an MSc in Defence and International Politics from the Ghana Armed Forces Command and Staff College. Has served in key roles, including Deputy Director for Special Operations, Assistant Director for Land Operations, and Services Engineer at the 37 Military Hospital. With extensive experience in UN Peace Support Operations and mentoring over 20 junior leaders, he excels in strategic planning and operational execution. He currently serves as Deputy Logistics Officer in the Ghana Armed Forces.",
     image: "/assets/hon.jpeg",
   },
+ 
   {
     id: 2,
+    name: "SADAT SUGRI LARYEA ESQ",
+    title: "Legal Lead & Secretary",
+    description: "A highly motivated and disciplined individual with a strong educational background, in Professional Law  (Ghana School of Law & LLB), and  military studies. Proven professional experience as Command Legal Advisor at Northern Command, GAF, Naval Legal Officer at GHQ, and Associate at Cromwell Gray LLP Attorneys and Counsellors at Law.",
+    image: "/assets/secetery.jpeg",
+  },
+  {
+    id: 3,
     name: "MR. DANIEL NELSON DEI",
     title: "Financial Lead & Audit",
     description:
       "Results-driven finance expert with 30+ years of experience, offering a unique blend of technical expertise, business insight, and leadership prowess. A Chartered Accountant (ICAG) with an MBA in Finance, he boasts a versatile background in financial management, budgeting, and reporting, with notable stints at the Controller and Accountant General's Department and top auditing firms like Deloitte. He has also showcased exceptional leadership skills as Audit Committee Chairman for various MMDAs.",
     image: "/assets/dei.jpeg",
-  },
-  {
-    id: 3,
-    name: "SADAT SUGRI LARYEA ESQ",
-    title: "Legal Lead & Secretary",
-    description: "A highly motivated and disciplined individual with a strong educational background, in Professional Law  (Ghana School of Law & LLB), and  military studies. Proven professional experience as Command Legal Advisor at Northern Command, GAF, Naval Legal Officer at GHQ, and Associate at Cromwell Gray LLP Attorneys and Counsellors at Law.",
-    image: "/assets/secetery.jpeg",
   },
   {
     id: 4,
