@@ -44,7 +44,7 @@ const board = [
   {
     id: 3,
     name: "SADAT SUGRI LARYEA ESQ",
-    title: "Legal Lead & Secretary",
+    title: "LEGAL LEAD & SECRETARY",
     description: "A highly motivated and disciplined individual with a strong educational background, in Professional Law  (Ghana School of Law & LLB), and  military studies. Proven professional experience as Command Legal Advisor at Northern Command, GAF, Naval Legal Officer at GHQ, and Associate at Cromwell Gray LLP Attorneys and Counsellors at Law.",
     image: "/assets/secetery.jpeg",
   },
