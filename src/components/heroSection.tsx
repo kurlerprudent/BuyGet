@@ -13,8 +13,8 @@ export function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const taglines = [
-    "Empowering Digital Africa",
-    "Tech Solutions for Tomorrow",
+    "Buyget ICT Solutions",
+    "Africa's Tech Power House",
     "Smart Ecosystem Builders",
   ];
 
