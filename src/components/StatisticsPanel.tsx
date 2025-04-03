@@ -41,7 +41,7 @@ export function StatsPanel() {
 
   return (
     <section
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100"
+      className="py-5 relative overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100"
       ref={ref}
     >
       <div

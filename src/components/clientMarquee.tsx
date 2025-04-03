@@ -39,7 +39,7 @@ export function ClientMarquee() {
 
   return (
     <section 
-      className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200" 
+      className="py-5 relative overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200" 
       ref={ref}
     >
       {/* Dynamic background texture */}

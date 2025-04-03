@@ -2,10 +2,16 @@
 import { motion, useInView } from 'framer-motion';
 import { Globe, Cpu, Shield, Rocket, Factory, Smartphone, Sun } from 'lucide-react';
 import { useRef } from 'react';
+import { useState } from 'react';
 
 export function CompanyOverview() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [animated, setAnimated] = useState(false);
+
+  if (isInView && !animated) {
+    setAnimated(true);
+  }
 
   const coreAreas = [
     { icon: <Cpu className="w-5 h-5" />, title: "AI & Software Development", color: "text-blue-400" },
@@ -28,7 +34,7 @@ export function CompanyOverview() {
         {/* Animated Legal Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={animated ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-16 inline-flex items-center px-6 py-3 rounded-full border backdrop-blur-sm bg-gradient-to-r from-pink-200 to-orange-200 border-pink-300/50"
         >
@@ -43,12 +49,12 @@ export function CompanyOverview() {
           {/* Introduction Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={animated ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="space-y-8 relative"
           >
             <div className="absolute -left-8 top-0 w-1 h-full bg-gradient-to-b from-pink-400 to-orange-400" />
-            
+
             <h2 className="text-4xl md:text-5xl font-bold">
               <span className="bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
                 Digital Transformation
@@ -57,9 +63,9 @@ export function CompanyOverview() {
                 Architects
               </span>
             </h2>
-            
+
             <p className="text-lg leading-relaxed text-gray-700">
-              As a certified technology powerhouse, BuyGet ICT Solutions combines legal excellence 
+              As a certified technology powerhouse, BuyGet ICT Solutions combines legal excellence
               with cutting-edge innovation to deliver transformative solutions across Africa.
             </p>
 
@@ -83,7 +89,7 @@ export function CompanyOverview() {
           {/* Core Areas Grid */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={animated ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
@@ -96,9 +102,9 @@ export function CompanyOverview() {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  animate={animated ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ 
+                  whileHover={{
                     y: -5,
                     borderColor: 'rgba(219, 39, 119, 0.3)',
                     boxShadow: '0 10px 30px rgba(219, 39, 119, 0.05)'

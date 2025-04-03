@@ -70,7 +70,7 @@ export const projects: Project[] = [
   {
     id: 5,
     slug: "itectona",
-    name: "Cybersecurity",
+    name: "itectona",
     description: "Security & military engineering.",
     category: "Defense",
     bgImage: "/assets/itectona.jpg",

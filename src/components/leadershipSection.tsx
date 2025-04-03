@@ -204,7 +204,7 @@ export default function LeadershipSection() {
         {/* Executive Caucus */}
         <div className="mb-16">
           <motion.h3
-            className="text-3xl font-semibold text-black mb-6"
+            className="text-xl font-semibold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -235,7 +235,7 @@ export default function LeadershipSection() {
         {/* Board Section */}
         <div className="mb-16">
           <motion.h3
-            className="text-3xl font-semibold text-black mb-6"
+            className="text-xl font-semibold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

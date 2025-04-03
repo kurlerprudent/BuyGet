@@ -46,15 +46,16 @@ export default function Page() {
             {ctech.name}
           </h1>
 
-          <div className="relative h-80 md:h-96 rounded-lg overflow-hidden mb-8">
+          <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden mb-8 shadow-2xl"> {/* Enhanced image container */}
             <Image
               src={ctech.bgImage}
               alt={ctech.name}
               fill
               style={{ objectFit: "cover" }}
-              className="rounded-lg"
+              className="rounded-2xl transition-transform duration-500 hover:scale-105" // Added transition and hover effect
               priority
             />
+            <div className="absolute inset-0 bg-black bg-opacity-20 rounded-2xl"></div> {/* Added subtle overlay */}
           </div>
 
           <p className="text-lg md:text-xl mb-4 text-gray-700">{ctech.description}</p>

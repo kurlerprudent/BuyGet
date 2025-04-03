@@ -9,13 +9,13 @@ const projectsPreview = [
     title: "SHSWEB",
     description: "Develops technological solutions for schools.",
     category: "Technology and Software Solutions",
-    bgImage:  "/assets/shsweb.jpeg",
+    bgImage: "/assets/shsweb.jpeg",
   },
   {
     title: "SOFTICA",
     description: "Software development and enterprise solutions.",
     category: "Technology and Software Solutions",
-    bgImage:"/assets/softica.jpg",
+    bgImage: "/assets/softica.jpg",
   },
   {
     title: "INOVIC",
@@ -35,7 +35,7 @@ const ProjectsPreview = () => {
   const displayedProjects = projectsPreview.slice(0, 4);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section className="py-5 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
           Our Inventions
@@ -68,7 +68,8 @@ const ProjectsPreview = () => {
                     style={{ objectFit: "cover" }}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-gray-800/60 to-transparent" />
+                  {/* Changed the gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent" />
                 </div>
                 <div className="p-6 bg-gray-100 text-gray-900">
                   <h3 className="text-2xl font-bold mb-2 text-black">

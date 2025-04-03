@@ -46,15 +46,16 @@ export default function Page() {
             {shsweb.name}
           </h1>
 
-          <div className="relative h-80 md:h-96 rounded-lg overflow-hidden mb-8">
+          <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden mb-8 shadow-xl border-4 border-gray-200"> {/* Enhanced image container */}
             <Image
               src={shsweb.bgImage}
               alt={shsweb.name}
               fill
               style={{ objectFit: "cover" }}
-              className="rounded-lg"
+              className="rounded-3xl transition-transform duration-500 hover:scale-105 brightness-95" // Added transition, hover effect, and brightness adjustment
               priority
             />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent rounded-3xl"></div> {/* Added gradient overlay */}
           </div>
 
           <p className="text-lg md:text-xl mb-4 text-gray-700">{shsweb.description}</p>
