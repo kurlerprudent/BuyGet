@@ -109,7 +109,7 @@ export function Navbar() {
             <Phone className="w-5 h-5" />
           </motion.a>
           <motion.a
-            href="mailto:info@example.com"
+            href="info@buyget.co"
             whileHover={{ scale: 1.1 }}
             className="text-gray-900 transition-all duration-300 ease-in hover:text-[#D93025]"
             title="Email us"
