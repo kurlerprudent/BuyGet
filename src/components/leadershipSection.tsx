@@ -113,7 +113,7 @@ function FlipCard({
           style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
         >
           <div className="relative w-full h-full">
-            <Image src={image} alt={name} fill className="object-fill" />
+            <Image src={image} alt={name} fill className="object-cover" />
             {/* Updated Name & Title Container */}
             <div
               className="absolute top-1 left-0 bg-black/60 text-white p-3 rounded-tr-xl rounded-bl-xl"
