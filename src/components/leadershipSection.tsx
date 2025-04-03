@@ -137,7 +137,7 @@ function FlipCard({
 
         {/* Back Side (keep same as before) */}
         <div
-          className="absolute w-full h-full backface-hidden rounded-xl shadow-lg border border-gray-300 bg-white/50 backdrop-blur-md p-6 flex flex-col items-center justify-center"
+          className="absolute w-full h-full backface-hidden overflow-auto rounded-xl shadow-lg border border-gray-300 bg-white/50 backdrop-blur-md p-6 flex flex-col items-center justify-center"
           style={{
             WebkitBackfaceVisibility: "hidden",
             backfaceVisibility: "hidden",
