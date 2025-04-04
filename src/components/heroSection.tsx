@@ -2,6 +2,7 @@
 
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function HeroSection() {
@@ -48,9 +49,9 @@ export function HeroSection() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 250 } },
   };
 
-  // Always use dark mode settings
+ 
   const bgImage = '/assets/lg2.jpeg';
-  // Removed the overlay
+
   const bgOverlay = `url(${bgImage})`;
 
   return (
@@ -122,8 +123,9 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
           >
-            <motion.a
-              href="/projects"
+            <Link href="/projects">
+            <motion.p
+             
               className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-yellow-500 
                          rounded-lg md:rounded-xl hover:shadow-xl transition-all flex items-center justify-center 
                          text-base md:text-lg font-semibold group text-white"
@@ -135,17 +137,20 @@ export function HeroSection() {
               Explore Innovations
               <ChevronDown className="ml-2 h-4 w-4 md:h-5 md:w-5 animate-bounce group-hover:translate-y-0.5 
                                         transition-transform text-white" />
-            </motion.a>
-
-            <motion.a
-              href="/form"
+            </motion.p>
+            </Link>
+  
+             <Link href='/form'>
+            <motion.p
+             
               className="px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-xl transition-all 
                          text-base md:text-lg font-semibold text-center
                          border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/50"
               whileHover={{ scale: 1.03 }}
             >
               Join Buyget Network
-            </motion.a>
+            </motion.p>
+            </Link>
           </motion.div>
 
           <motion.div
