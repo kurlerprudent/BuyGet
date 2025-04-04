@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BuyGet ICT Solutions",
   description: "BuyGet ICT Solutions specializes in software development, AI and robotics, cybersecurity,aerospace engineering, industrial automation,consumer electronics, and renewable energysolutions. With a strong foundation in cutting-edge technology and innivation. Buyget ICT Solutions is positioned to revolutionize multiple industries while ensuring security, eficiency, and growth in digital education and beyond.",
+  alternates:{
+    canonical:"https://buyget.co",
+  },
   icons:{
     icon: "/assets/favicon.ico",
     shortcut: "/assets/favicon.ico",
